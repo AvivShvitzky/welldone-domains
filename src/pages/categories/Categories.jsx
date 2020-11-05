@@ -13,6 +13,7 @@ const Categories = () => {
       </Navbar>
 
       <div className="page__content">
+        <br/>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti magni consequuntur laborum deserunt, autem eligendi odio labore voluptatem, et, nulla commodi? Quae quos blanditiis quo atque dolore voluptatibus? Reprehenderit, iste?
       </div>
     </div>

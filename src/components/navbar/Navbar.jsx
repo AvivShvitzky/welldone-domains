@@ -11,26 +11,34 @@ const Navbar = ({ title }) => {
       <Title>{title}</Title>
 
       <div className="navbar__icons">
-        <FontAwesomeIcon 
-          icon={faPlus} 
-          size="xs"
-          className={true ? 'icon--available' : 'icon--unavailable'}
-        />
-        <FontAwesomeIcon 
-          icon={faBookOpen} 
-          size="xs"
-          className={true ? 'icon--available' : 'icon--unavailable'}
-        />
-        <FontAwesomeIcon 
-          icon={faEdit} 
-          size="xs"
-          className={true ? 'icon--available' : 'icon--unavailable'}
-        />
-        <FontAwesomeIcon 
-          icon={faTrashAlt} 
-          size="xs"
-          className={true ? 'icon--available' : 'icon--unavailable'}
-        />
+        <div className={true ? 'icon__box icon__box--available' : 'icon__box icon__box--unavailable'}>
+          <FontAwesomeIcon 
+            icon={faPlus} 
+            size="xs"
+          />
+          <span>Add</span>
+        </div>
+        <div className={true ? 'icon__box icon__box--available' : 'icon__box icon__box--unavailable'}>
+          <FontAwesomeIcon 
+            icon={faBookOpen} 
+            size="xs"
+          />
+          <span>Read</span>
+        </div>
+        <div className={true ? 'icon__box icon__box--available' : 'icon__box icon__box--unavailable'}>
+          <FontAwesomeIcon 
+            icon={faEdit} 
+            size="xs"
+          />
+          <span>Edit</span>
+        </div>
+        <div className={true ? 'icon__box icon__box--available' : 'icon__box icon__box--unavailable'}>
+          <FontAwesomeIcon 
+            icon={faTrashAlt} 
+            size="xs"
+          />
+          <span>Delete</span>
+        </div>
       </div>
     </div>
   );
