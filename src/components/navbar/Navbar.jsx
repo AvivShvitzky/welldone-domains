@@ -11,28 +11,28 @@ const Navbar = ({ title }) => {
       <Title>{title}</Title>
 
       <div className="navbar__icons">
-        <div className={true ? 'icon__box icon__box--available' : 'icon__box icon__box--unavailable'}>
+        <div className={`icon__box ${true ? 'icon__box--available' : 'icon__box--unavailable'}`}>
           <FontAwesomeIcon 
             icon={faPlus} 
             size="xs"
           />
           <span>Add</span>
         </div>
-        <div className={true ? 'icon__box icon__box--available' : 'icon__box icon__box--unavailable'}>
+        <div className={`icon__box ${true ? 'icon__box--available' : 'icon__box--unavailable'}`}>
           <FontAwesomeIcon 
             icon={faBookOpen} 
             size="xs"
           />
           <span>Read</span>
         </div>
-        <div className={true ? 'icon__box icon__box--available' : 'icon__box icon__box--unavailable'}>
+        <div className={`icon__box ${true ? 'icon__box--available' : 'icon__box--unavailable'}`}>
           <FontAwesomeIcon 
             icon={faEdit} 
             size="xs"
           />
           <span>Edit</span>
         </div>
-        <div className={true ? 'icon__box icon__box--available' : 'icon__box icon__box--unavailable'}>
+        <div className={`icon__box ${true ? 'icon__box--available' : 'icon__box--unavailable'}`}>
           <FontAwesomeIcon 
             icon={faTrashAlt} 
             size="xs"
