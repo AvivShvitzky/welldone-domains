@@ -2,7 +2,7 @@ import React from 'react';
 import './Categories.css';
 
 import { useRecoilState } from "recoil";
-import { categoryIsChecked as categoryIsCheckedAtom } from "../../store/atoms";
+import { currentPage as categoryIsCheckedAtom } from "../../store/atoms";
 
 import Navbar from '../../components/navbar/Navbar'
 import List from '../../components/list/List'
@@ -15,9 +15,10 @@ function Categories() {
       <Navbar
         title="Categories"
       />
-
       <div className="page__content">
-        <List/>
+        <List
+          onClickHandler={setCategoryIsChecked}
+        />
       </div>
     </div>
   );

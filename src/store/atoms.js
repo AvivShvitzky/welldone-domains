@@ -1,8 +1,8 @@
 import { atom } from "recoil";
 
-export const categoryIsChecked = atom({
-  key: "categoryIsChecked",
-  default: false
+export const currentPage = atom({
+  key: "currentPage",
+  default: 'categories'
 });
 
 // export const view = atom({
