@@ -1,8 +1,10 @@
 import { atom } from "recoil";
 
+import { CATEGORIES } from '../consts'
+
 export const currentPage = atom({
   key: "currentPage",
-  default: 'categories'
+  default: CATEGORIES
 });
 
 // export const view = atom({
