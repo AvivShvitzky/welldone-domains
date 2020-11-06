@@ -1,6 +1,6 @@
 // icon types
 export const ICON_ADD = 'IconAdd'
-export const ICON_READ = 'iconRead'
+export const ICON_VIEW = 'iconView'
 export const ICON_EDIT = 'iconEdit'
 export const ICON_DELETE = 'iconDelete'
 

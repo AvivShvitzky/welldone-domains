@@ -5,7 +5,7 @@ import { faCoffee, faPlus, faEdit, faBookOpen, faTrashAlt } from '@fortawesome/f
 
 import Title from '../title/Title'
 import {
-  ICON_ADD, ICON_READ, ICON_EDIT, ICON_DELETE,
+  ICON_ADD, ICON_VIEW, ICON_EDIT, ICON_DELETE,
   CATEGORIES, CATEGORIES_CHECKED, ADD_CATEGORY, EDIT_CATEGORY, VIEW_CATEGORY
 } from '../../consts'
 
@@ -17,7 +17,7 @@ function Navbar({ title }) {
   // determans if an icon would be available on a certain page
   const iconsAvailability = {
     CATEGORIES: [ICON_ADD], 
-    CATEGORIES_CHECKED: [ICON_ADD, ICON_READ, ICON_EDIT, ICON_DELETE], 
+    CATEGORIES_CHECKED: [ICON_ADD, ICON_VIEW, ICON_EDIT, ICON_DELETE], 
     ADD_CATEGORY: [], 
     EDIT_CATEGORY: [ICON_ADD, ICON_DELETE],
     VIEW_CATEGORY: [ICON_ADD, ICON_EDIT, ICON_DELETE]
@@ -42,7 +42,7 @@ function Navbar({ title }) {
             size="lg"/>
           <span>Add</span>
         </div>
-        <div className={`icon__box ${iconAvailable(ICON_READ) ? 'icon__box--available' : 'icon__box--unavailable'}`}>
+        <div className={`icon__box ${iconAvailable(ICON_VIEW) ? 'icon__box--available' : 'icon__box--unavailable'}`}>
           <FontAwesomeIcon 
             icon={faBookOpen} 
             size="lg"/>

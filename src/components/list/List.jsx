@@ -5,7 +5,7 @@ import { CATEGORIES_CHECKED } from '../../consts'
 
 function List({ data, onClickHandler }) {
 
-  const listItems = data.map((item) =>
+  const listItems = data.map(item =>
   <a 
     onClick={() => onClickHandler(CATEGORIES_CHECKED)} href="#" className="list-group-item list-group-item-action"
     key={item.name.toString()}
