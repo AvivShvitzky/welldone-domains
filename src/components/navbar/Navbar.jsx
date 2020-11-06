@@ -14,6 +14,7 @@ import { currentPage as currentPageAtom } from "../../store/atoms";
 
 function Navbar({ title }) {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
+  // determans if an icon would be available on a certain page
   const iconsAvailability = {
     CATEGORIES: [ICON_ADD], 
     CATEGORIES_CHECKED: [ICON_ADD, ICON_READ, ICON_EDIT, ICON_DELETE], 
