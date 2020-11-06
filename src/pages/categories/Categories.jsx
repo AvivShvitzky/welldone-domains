@@ -3,6 +3,7 @@ import './Categories.css';
 
 import { useRecoilState } from "recoil";
 import { currentPage as categoryIsCheckedAtom } from "../../store/atoms";
+import { categories as categoriesAtom } from '../../store/atoms'
 import { CATEGORIES } from '../../consts'
 
 import Navbar from '../../components/navbar/Navbar'
@@ -10,6 +11,7 @@ import List from '../../components/list/List'
 
 function Categories() {
   const [categoryIsChecked, setCategoryIsChecked] = useRecoilState(categoryIsCheckedAtom);
+  const [categories, setCategories] = useRecoilState(categoriesAtom);
 
   // allows the parent div to fire a click event seperate from his childs
   const clickHandler = event => {
@@ -29,6 +31,7 @@ function Categories() {
       />
       <div className="page__content">
         <List
+          data={categories}
           onClickHandler={setCategoryIsChecked}
         />
       </div>

@@ -46,7 +46,7 @@ function Navbar({ title }) {
           <FontAwesomeIcon 
             icon={faBookOpen} 
             size="lg"/>
-          <span>Read</span>
+          <span>View</span>
         </div>
         <div className={`icon__box ${iconAvailable(ICON_EDIT) ? 'icon__box--available' : 'icon__box--unavailable'}`}>
           <FontAwesomeIcon 
