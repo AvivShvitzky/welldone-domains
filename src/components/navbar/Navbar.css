@@ -31,9 +31,21 @@
 .icon__box--available:hover {
   opacity: 80%;
   transition: opacity 0.5s;
+  text-decoration: none;
+  color: #007bff;
 }
 
 
-.icon__box--unavailable {
+.icon__box--unavailable, .icon__box--unavailable:hover {
   color: #6c757d;
+}
+
+.icon__box--unavailable:hover {
+  text-decoration: none;
+  cursor: default;
+}
+
+.title__link:hover {
+  opacity: 80%;
+  text-decoration: none;
 }

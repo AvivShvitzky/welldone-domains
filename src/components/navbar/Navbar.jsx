@@ -1,47 +1,52 @@
-import React, { useEffect } from 'react';
-import './Navbar.css';
+// libraries and css
+import React from 'react';
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee, faPlus, faEdit, faBookOpen, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import './Navbar.css';
 
+// components
 import Title from '../title/Title'
-import {
-  ICON_ADD, ICON_VIEW, ICON_EDIT, ICON_DELETE,
-  CATEGORIES, CATEGORIES_CHECKED, ADD_CATEGORY, EDIT_CATEGORY, VIEW_CATEGORY
-} from '../../consts'
 
+// consts
+import {
+  ICON_NEW, ICON_VIEW, ICON_EDIT, ICON_DELETE,
+  CATEGORIES, CATEGORIES_CHECKED, NEW_CATEGORY, EDIT_CATEGORY, VIEW_CATEGORY
+} from '../../consts'
+import { ICONS_AVAILABILITY, TITLE_OPTIONS } from './NavBar'
+
+// store
 import { useRecoilState } from "recoil";
 import { currentPage as currentPageAtom } from "../../store/atoms";
 
-function Navbar({ title }) {
+function Navbar() {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
-  // determans if an icon would be available on a certain page
-  const iconsAvailability = {
-    CATEGORIES: [ICON_ADD], 
-    CATEGORIES_CHECKED: [ICON_ADD, ICON_VIEW, ICON_EDIT, ICON_DELETE], 
-    ADD_CATEGORY: [], 
-    EDIT_CATEGORY: [ICON_ADD, ICON_DELETE],
-    VIEW_CATEGORY: [ICON_ADD, ICON_EDIT, ICON_DELETE]
-  }
+  const title = TITLE_OPTIONS[currentPage]
 
-  useEffect(() => {
-    console.log(currentPage);
-  }, [currentPage]);
-  
   const iconAvailable = iconType => {
-    return iconsAvailability[currentPage].includes(iconType)
+    return ICONS_AVAILABILITY[currentPage].includes(iconType)
   }
 
   return (
     <nav className="navbar bg-white">
-      <Title>{title}</Title>
+      <Link 
+        to='/categories'
+        className="title__link"
+      >
+        <Title>{title}</Title>
+      </Link>
 
       <div className="navbar__icons">
-        <div className={`icon__box ${iconAvailable(ICON_ADD) ? 'icon__box--available' : 'icon__box--unavailable'}`}>
+        <Link 
+          to='/new-category' 
+          className={`icon__box ${iconAvailable(ICON_NEW) ? 'icon__box--available' : 'icon__box--unavailable'}`}
+          onClick={() => setCurrentPage(NEW_CATEGORY)}
+        >
           <FontAwesomeIcon 
             icon={faPlus} 
             size="lg"/>
-          <span>Add</span>
-        </div>
+          <span>New</span>
+        </Link>
         <div className={`icon__box ${iconAvailable(ICON_VIEW) ? 'icon__box--available' : 'icon__box--unavailable'}`}>
           <FontAwesomeIcon 
             icon={faBookOpen} 

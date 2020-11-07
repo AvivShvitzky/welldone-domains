@@ -1,23 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Categories.css';
 
 import { useRecoilState } from "recoil";
-import { currentPage as categoryIsCheckedAtom } from "../../store/atoms";
-import { categories as categoriesAtom } from '../../store/atoms'
+import { 
+  categories as categoriesAtom,
+  currentPage as currentPageAtom,
+} 
+from '../../store/atoms'
 import { CATEGORIES } from '../../consts'
 
-import Navbar from '../../components/navbar/Navbar'
 import List from '../../components/list/List'
 
-function Categories() {
-  const [categoryIsChecked, setCategoryIsChecked] = useRecoilState(categoryIsCheckedAtom);
+function Categories(props) {
+  const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
   const [categories, setCategories] = useRecoilState(categoriesAtom);
+
+  useEffect(() => {
+    setCurrentPage(CATEGORIES)
+  }, [])
 
   // allows the parent div to fire a click event seperate from his childs
   const clickHandler = event => {
     event.preventDefault();
     if (event.target === event.currentTarget) {
-      setCategoryIsChecked(CATEGORIES)
+      setCurrentPage(CATEGORIES)
     }
   }
 
@@ -26,13 +32,10 @@ function Categories() {
       className="categories"
       onClick={event => clickHandler(event)}
     >
-      <Navbar
-        title="Categories"
-      />
       <div className="page__content">
         <List
           data={categories}
-          onClickHandler={setCategoryIsChecked}
+          onClickHandler={setCurrentPage}
         />
       </div>
     </div>
