@@ -1,15 +1,20 @@
+// libraries and css
 import React, { useEffect } from 'react';
 import './Categories.css';
 
+// components
+import List from '../../components/list/List'
+
+// consts
+import { CATEGORIES } from '../../consts'
+
+// store
 import { useRecoilState } from "recoil";
 import { 
   categories as categoriesAtom,
   currentPage as currentPageAtom,
 } 
 from '../../store/atoms'
-import { CATEGORIES } from '../../consts'
-
-import List from '../../components/list/List'
 
 function Categories(props) {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
