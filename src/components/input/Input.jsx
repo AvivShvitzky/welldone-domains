@@ -3,7 +3,7 @@ import './Input.css';
 
 const Input = ({ value }) => {
   return (
-    <div className="input">{value}</div>
+    <input type="text" className="input" value={value}/>
   );
 };
 
