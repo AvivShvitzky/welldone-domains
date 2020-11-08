@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 // import './Categories.css';
 
 // components
-import Input from '../../components/form/Form'
+import Form from '../../components/form/Form'
 
 // consts
 import { NEW_CATEGORY } from '../../consts'
@@ -27,7 +27,9 @@ function NewCategory() {
   return (
     <div className="categories">
       <div className="page__content">
-        <Input></Input>
+        <Form 
+          clickHandler={}
+        />
       </div>
     </div>
   );

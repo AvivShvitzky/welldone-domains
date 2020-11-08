@@ -9,7 +9,7 @@ import List from '../../components/list/List'
 import { CATEGORIES } from '../../consts'
 
 // store
-import { useRecoilState } from "recoil";
+import { useRecoilState } from "recoil"; 
 import { 
   categories as categoriesAtom,
   currentPage as currentPageAtom,
