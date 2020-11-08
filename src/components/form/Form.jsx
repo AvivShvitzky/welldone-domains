@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Form.css';
 
 import { 
   TOAST_SUCCESS, 
   TOAST_WARNING,
   NEW_CATEGORY_SUCCESS,
-  NEW_CATEGORY_FAIL
+  NEW_CATEGORY_FAIL,
+  CREATE_TOAST,
+  DELETE_TOAST
 } from '../toast/Toast.consts'
 import useToast from '../toast/Toast'
 
@@ -14,14 +16,21 @@ function Form({ clickHandler, inputValue = ''}) {
   const [value, setValue] = useState(inputValue)
   const toast = useToast()
 
+  // clean
+  useEffect(() => {
+    return () => {
+      toast(DELETE_TOAST)
+    };
+  }, []);
+
   const onSubmitHandler = e => {
     e.preventDefault();
     const addingSucceeded = clickHandler(value);
     // trigger a toast
     if (addingSucceeded) {
-      toast(TOAST_SUCCESS, NEW_CATEGORY_SUCCESS)
+      toast(CREATE_TOAST, TOAST_SUCCESS, NEW_CATEGORY_SUCCESS)
     } else {
-      toast(TOAST_WARNING, NEW_CATEGORY_FAIL)
+      toast(CREATE_TOAST, TOAST_WARNING, NEW_CATEGORY_FAIL)
     }
     // clean data
     setValue('')
