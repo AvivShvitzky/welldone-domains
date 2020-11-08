@@ -28,7 +28,7 @@ function NewCategory() {
     <div className="categories">
       <div className="page__content">
         <Form 
-          clickHandler={}
+          // clickHandler={}
         />
       </div>
     </div>

@@ -1,32 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 
-import { categories } from './atoms'
+import { categories as categoriesAtom } from './atoms'
 
-export function addCategory(newCategoryName) {
-  const setCategories = useSetRecoilState(categories);
+export function AddCategory() {
+  const [categories, setCategories] = useRecoilState(categoriesAtom);
 
-  setCategories((oldCategories) => {
-    const categoryExists = findCategoryIndex(newCategoryName) !== -1
-    if (!categoryExists) {
-      return [
-        ...oldCategories,
-        {
-          name: newCategoryName
-        },
-      ]
-    }
-    return;
-  });
-}
+  const categoryExists = newCategoryName => findCategoryIndex(categories, newCategoryName) !== -1
+
+  const memoizedCallback = useCallback(
+    newCategoryName => {
+      if (!categoryExists(newCategoryName)) {
+        const updatedCategories = [
+          ...categories,
+          {
+            name: newCategoryName
+          },
+        ]
+        setCategories(updatedCategories)
+      }
+    },
+    [categories, categoryExists],
+  );
+
+  return memoizedCallback
+} 
 
 /**
 * searches for a category with a given name.
 * @param {String} categoryName
 * @returns the index of the found category. If none, it returns -1.
 */
-function findCategoryIndex(categoryName) {
+function findCategoryIndex(categories, categoryName) {
   const categoryIndex = categories.findIndex(category => category.name === categoryName);
   return categoryIndex;
 }
