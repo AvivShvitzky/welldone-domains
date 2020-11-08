@@ -6,12 +6,10 @@ import { categories as categoriesAtom } from './atoms'
 
 export function AddCategory() {
   const [categories, setCategories] = useRecoilState(categoriesAtom);
-
-  const categoryExists = newCategoryName => findCategoryIndex(categories, newCategoryName) !== -1
-
+  
   const memoizedCallback = useCallback(
     newCategoryName => {
-      if (!categoryExists(newCategoryName)) {
+      if (!categoryExists(categories, newCategoryName)) {
         const updatedCategories = [
           ...categories,
           {
@@ -22,9 +20,19 @@ export function AddCategory() {
       }
     },
     [categories, categoryExists],
-  );
+    );
+    
+  return memoizedCallback;
+} 
 
-  return memoizedCallback
+/**
+* checks if a category exists on the categories list.
+* @param {Array} categories
+* @param {String} categoryName
+* @returns if the category exists on the categories list.
+*/
+function categoryExists(categories, categoryName) {
+  return findCategoryIndex(categories, categoryName) !== -1
 } 
 
 /**

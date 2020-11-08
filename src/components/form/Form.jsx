@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './Form.css';
 
-import { AddCategory as AddCategoryMutation } from '../../store/mutations'
+import { AddCategory as useCategoryMutation } from '../../store/mutations'
 
 function Form({ inputValue = ''}) {
-  const AddCategory = AddCategoryMutation()
+  const AddCategory = useCategoryMutation()
   const [value, setValue] = useState(inputValue)
 
   useEffect(() => {
