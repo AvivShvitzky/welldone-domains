@@ -13,7 +13,7 @@ import {
   ICON_NEW, ICON_VIEW, ICON_EDIT, ICON_DELETE,
   CATEGORIES, CATEGORIES_CHECKED, NEW_CATEGORY, EDIT_CATEGORY, VIEW_CATEGORY
 } from '../../consts'
-import { ICONS_AVAILABILITY, TITLE_OPTIONS } from './NavBar'
+import { ICONS_AVAILABILITY, TITLE_OPTIONS } from './Navbar.consts'
 
 // store
 import { useRecoilState } from "recoil";
