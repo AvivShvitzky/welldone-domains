@@ -4,6 +4,7 @@ import {
 
 // determans if an icon would be available on a certain page
 export const ICONS_AVAILABILITY = {
+  NOT_MOUNTED: [],
   CATEGORIES: [ICON_NEW], 
   CATEGORIES_CHECKED: [ICON_NEW, ICON_VIEW, ICON_EDIT, ICON_DELETE], 
   NEW_CATEGORY: [], 
@@ -12,6 +13,7 @@ export const ICONS_AVAILABILITY = {
 }
 
 export const TITLE_OPTIONS = {
+  NOT_MOUNTED: '',
   CATEGORIES: 'Categories', 
   CATEGORIES_CHECKED: 'Categories', 
   NEW_CATEGORY: 'New Category', 
