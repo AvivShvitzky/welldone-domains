@@ -30,9 +30,3 @@ function findCategoryIndex(categoryName) {
   const categoryIndex = categories.findIndex(category => category.name === categoryName);
   return categoryIndex;
 }
-
-// utility for creating unique Id
-let id = 0;
-function getId() {
-  return id++;
-}
