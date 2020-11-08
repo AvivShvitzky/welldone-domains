@@ -17,6 +17,9 @@ export function AddCategory() {
           },
         ]
         setCategories(updatedCategories)
+        return true
+      } else{
+        return false
       }
     },
     [categories, categoryExists],

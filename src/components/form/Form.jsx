@@ -1,15 +1,32 @@
 import React, { useState } from 'react';
 import './Form.css';
 
+import { 
+  TOAST_SUCCESS, 
+  TOAST_WARNING,
+  NEW_CATEGORY_SUCCESS,
+  NEW_CATEGORY_FAIL
+} from '../toast/Toast.consts'
+import useToast from '../toast/Toast'
+
+
 function Form({ clickHandler, inputValue = ''}) {
   const [value, setValue] = useState(inputValue)
+  const toast = useToast()
 
   const onSubmitHandler = e => {
     e.preventDefault();
-    clickHandler(value);
+    const addingSucceeded = clickHandler(value);
+    // trigger a toast
+    if (addingSucceeded) {
+      toast(TOAST_SUCCESS, NEW_CATEGORY_SUCCESS)
+    } else {
+      toast(TOAST_WARNING, NEW_CATEGORY_FAIL)
+    }
+    // clean data
     setValue('')
   }
-
+ 
   return (
     <form>
       <div className="form-group">
