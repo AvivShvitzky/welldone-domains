@@ -1,26 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './Form.css';
 
-import { AddCategory as useCategoryMutation } from '../../store/mutations'
-
-function Form({ inputValue = ''}) {
-  const AddCategory = useCategoryMutation()
+function Form({ clickHandler, inputValue = ''}) {
   const [value, setValue] = useState(inputValue)
 
-  useEffect(() => {
-    console.log(AddCategory('test'));
-    },[])
+  const onSubmitHandler = e => {
+    e.preventDefault();
+    clickHandler(value);
+    setValue('')
+  }
 
   return (
-    <div>
+    <form>
       <div className="form-group">
-        {value}
         <label htmlFor="categoryName">Category Name</label>
         <input value={value} onChange={(e) => setValue(e.target.value)} type="text" className="form-control input" id="categoryName" aria-describedby="categoryHelp" />
         <small id="categoryHelp" className="form-text text-muted">Enter a name for a new category.</small>
       </div>
-      <button onClick={() => AddCategory(value)} type="submit" className="btn btn-primary">Submit</button>
-    </div>
+      <button onClick={onSubmitHandler} type="submit" className="btn btn-primary">Submit</button>
+    </form>
   );
 };
 
