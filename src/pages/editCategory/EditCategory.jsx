@@ -34,7 +34,7 @@ function EditCategory(props) {
       <div className="page__content">
         <Form 
           clickHandler={editClickHandler}
-          inputValue={category.name}
+          categoryName={category.name}
         />
       </div>
     </div>

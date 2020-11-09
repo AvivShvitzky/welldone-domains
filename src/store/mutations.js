@@ -36,8 +36,6 @@ export function useEditCategory() {
     (originalCategoryName, updatedCategoryName) => {
       const categoryIndex = findCategoryIndex(categories, originalCategoryName)
       const copiedCategories = deepCopyArray(categories)
-      console.log(categoryIndex);
-      console.log(copiedCategories);
       if (categoryIndex === -1) {
         return false
       } else {
