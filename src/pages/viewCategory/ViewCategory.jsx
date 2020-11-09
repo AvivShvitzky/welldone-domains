@@ -1,36 +1,37 @@
 // libraries and css
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 // import './Categories.css';
 
 // components
 import Form from '../../components/form/Form'
 
 // consts
-import { NEW_CATEGORY } from '../../consts'
+import { VIEW_CATEGORY } from '../../consts'
 
 // store
 import { useRecoilState } from "recoil";
 import { currentPage as currentPageAtom } from '../../store/atoms'
-import { useAddCategory } from '../../store/mutations'
+import { useFindCategory } from '../../store/getters'
 
 
-function NewCategory() {
+function ViewCategory(props) {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
-  const addCategory = useAddCategory()
+  const [category, setCategory] = useState({ name: '' })
+  const findCategory = useFindCategory()
 
   useEffect(() => {
-    setCurrentPage(NEW_CATEGORY)
+    const categoryName = props.match.params.name
+    setCurrentPage(VIEW_CATEGORY)
+    setCategory(findCategory(categoryName))
   }, [])
 
   return (
     <div className="categories">
       <div className="page__content">
-        <Form 
-          clickHandler={addCategory}
-        />
+        {category.name}
       </div>
     </div>
   );
 };
 
-export default NewCategory;
+export default ViewCategory;

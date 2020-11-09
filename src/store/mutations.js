@@ -3,8 +3,9 @@ import React, { useState, useCallback } from 'react';
 import { useRecoilState } from "recoil";
 
 import { categories as categoriesAtom } from './atoms'
+import { findCategoryIndex } from './utils'
 
-export function AddCategory() {
+export function useAddCategory() {
   const [categories, setCategories] = useRecoilState(categoriesAtom);
   
   const memoizedCallback = useCallback(
@@ -36,14 +37,4 @@ export function AddCategory() {
 */
 function categoryExists(categories, categoryName) {
   return findCategoryIndex(categories, categoryName) !== -1
-} 
-
-/**
-* searches for a category with a given name.
-* @param {String} categoryName
-* @returns the index of the found category. If none, it returns -1.
-*/
-function findCategoryIndex(categories, categoryName) {
-  const categoryIndex = categories.findIndex(category => category.name === categoryName);
-  return categoryIndex;
 }

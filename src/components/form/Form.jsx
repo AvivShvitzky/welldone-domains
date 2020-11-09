@@ -16,7 +16,7 @@ function Form({ clickHandler, inputValue = ''}) {
   const [value, setValue] = useState(inputValue)
   const toast = useToast()
 
-  // clean
+  // clean up
   useEffect(() => {
     return () => {
       toast(DELETE_TOAST)

@@ -22,7 +22,7 @@ import { currentPage as currentPageAtom } from "../../store/atoms";
 function Navbar() {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
   const title = TITLE_OPTIONS[currentPage]
-
+  const name ='pools'
   const iconAvailable = iconType => {
     return ICONS_AVAILABILITY[currentPage].includes(iconType)
   }
@@ -47,12 +47,18 @@ function Navbar() {
             size="lg"/>
           <span>New</span>
         </Link>
-        <div className={`icon__box ${iconAvailable(ICON_VIEW) ? 'icon__box--available' : 'icon__box--unavailable'}`}>
+        <Link 
+          to={{
+            pathname: `/category/${name}`,
+            state: { name }
+          }} 
+          className={`icon__box ${iconAvailable(ICON_VIEW) ? 'icon__box--available' : 'icon__box--unavailable'}`}
+        >
           <FontAwesomeIcon 
             icon={faBookOpen} 
             size="lg"/>
           <span>View</span>
-        </div>
+        </Link>
         <div className={`icon__box ${iconAvailable(ICON_EDIT) ? 'icon__box--available' : 'icon__box--unavailable'}`}>
           <FontAwesomeIcon 
             icon={faEdit} 

@@ -8,7 +8,8 @@ import {
 } from 'react-router-dom';
 
 import Categories from './pages/categories/Categories'
-import NewCategory from './pages/NewCategory/NewCategory'
+import NewCategory from './pages/newCategory/NewCategory'
+import ViewCategory from './pages/viewCategory/ViewCategory'
 import Navbar from './components/navbar/Navbar'
 
 
@@ -27,9 +28,9 @@ const Router = () => {
         <Route exact default path="/new-category"
           component={NewCategory}
         />
-        {/* <Route path="/teams/:id"
-          component={Team}
-        /> */}
+        <Route path="/category/:name"
+          component={ViewCategory}
+        />
       </Switch>
     </BrowserRouter>
   )
