@@ -1,3 +1,4 @@
+// libraries and css
 import React, { useState, useEffect } from 'react';
 import './Form.css';
 
@@ -15,7 +16,6 @@ import {
 import { NEW_CATEGORY, EDIT_CATEGORY } from '../../consts'
 
 import useToast from '../toast/Toast'
-
 
 function Form({ clickHandler, currentPage, categoryName}) {
   const [value, setValue] = useState('')

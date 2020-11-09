@@ -1,8 +1,9 @@
-
+// libraries and css
 import React from 'react';
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
+// consts
 import { TOAST_SUCCESS, TOAST_WARNING, CREATE_TOAST, DELETE_TOAST } from './Toast.consts'
 
 toast.configure()

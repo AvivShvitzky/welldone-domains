@@ -1,6 +1,5 @@
 // libraries and css
 import React, { useEffect, useState } from 'react';
-// import './Categories.css';
 
 // components
 import Form from '../../components/form/Form'
