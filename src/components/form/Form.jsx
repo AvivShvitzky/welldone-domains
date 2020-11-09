@@ -23,7 +23,9 @@ function Form({ clickHandler, currentPage, categoryName}) {
 
   // initial
   useEffect(() => {
-    setValue(categoryName)
+    if (categoryName) {
+      setValue(categoryName)
+    }
   },[categoryName])
 
   // clean up
