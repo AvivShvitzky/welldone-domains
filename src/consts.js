@@ -1,8 +1,9 @@
 // icon types
-export const ICON_NEW = 'IconNew'
-export const ICON_VIEW = 'iconView'
-export const ICON_EDIT = 'iconEdit'
-export const ICON_DELETE = 'iconDelete'
+export const ICON_NEW = 'ICON_NEW'
+export const ICON_VIEW = 'ICON_VIEW'
+export const ICON_EDIT = 'ICON_EDIT'
+export const ICON_DELETE = 'ICON_DELETE'
+export const ICON_HOME = 'ICON_HOME'
 
 // pages and contexes
 export const NOT_MOUNTED = 'NOT_MOUNTED'

@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee, faPlus, faEdit, faBookOpen, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faCoffee, faPlus, faEdit, faBookOpen, faTrashAlt, faHome } from '@fortawesome/free-solid-svg-icons'
 import './Navbar.css';
 
 // components
@@ -10,7 +10,7 @@ import Title from '../title/Title'
 
 // consts
 import {
-  ICON_NEW, ICON_VIEW, ICON_EDIT, ICON_DELETE,
+  ICON_NEW, ICON_VIEW, ICON_EDIT, ICON_DELETE, ICON_HOME,
   CATEGORIES, CATEGORIES_CHECKED, NEW_CATEGORY, EDIT_CATEGORY, VIEW_CATEGORY
 } from '../../consts'
 import { ICONS_AVAILABILITY, TITLE_OPTIONS } from './Navbar.consts'
@@ -36,14 +36,23 @@ function Navbar() {
 
   return (
     <nav className="navbar bg-white">
-      <Link 
+      <span 
         to='/categories'
         className="title__link"
       >
         <Title>{title}</Title>
-      </Link>
+      </span>
 
       <div className="navbar__icons">
+        <Link 
+          to='/categories' 
+          className={`icon__box ${iconAvailable(ICON_HOME) ? 'icon__box--available' : 'icon__box--unavailable'}`}
+        >
+          <FontAwesomeIcon 
+            icon={faHome} 
+            size="lg"/>
+          <span>Home</span>
+        </Link>
         <Link 
           to={{pathname: iconAvailable(ICON_NEW) ? '/new-category' : ''}} 
           className={`icon__box ${iconAvailable(ICON_NEW) ? 'icon__box--available' : 'icon__box--unavailable'}`}

@@ -44,8 +44,3 @@
   text-decoration: none;
   cursor: default;
 }
-
-.title__link:hover {
-  opacity: 80%;
-  text-decoration: none;
-}
