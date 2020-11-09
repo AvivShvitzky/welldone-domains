@@ -61,7 +61,7 @@ function Form({ clickHandler, currentPage, categoryName}) {
           id="categoryName" 
           aria-describedby="categoryHelp" 
         />
-        <small id="categoryHelp" className="form-text text-muted">Enter a name for a new category.</small>
+        <small id="categoryHelp" className="form-text text-muted">Enter a name for a category.</small>
       </div>
       <button onClick={onSubmitHandler} type="submit" className="btn btn-primary">Submit</button>
     </form>
