@@ -17,11 +17,15 @@ import { NEW_CATEGORY, EDIT_CATEGORY } from '../../consts'
 import useToast from '../toast/Toast'
 
 
-function Form({ clickHandler, currentPage, categoryName}) {
+function Form({ clickHandler, currentPage, categoryName = 'test'}) {
   const [value, setValue] = useState(categoryName)
   const toast = useToast()
 
-  console.log(categoryName);
+  // initial
+  useEffect(() => {
+    setValue(categoryName)
+  },[categoryName])
+
   // clean up
   useEffect(() => {
     return () => {
