@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import './Form.css';
 
+// consts
 import { 
   TOAST_SUCCESS, 
   TOAST_WARNING,
   NEW_CATEGORY_SUCCESS,
   NEW_CATEGORY_FAIL,
+  EDIT_CATEGORY_SUCCESS,
+  EDIT_CATEGORY_FAIL,
   CREATE_TOAST,
   DELETE_TOAST
 } from '../toast/Toast.consts'
+import { NEW_CATEGORY, EDIT_CATEGORY } from '../../consts'
+
 import useToast from '../toast/Toast'
 
 
-function Form({ clickHandler, inputValue = ''}) {
+function Form({ clickHandler, currentPage, inputValue = ''}) {
   const [value, setValue] = useState(inputValue)
   const toast = useToast()
 
@@ -25,12 +30,19 @@ function Form({ clickHandler, inputValue = ''}) {
 
   const onSubmitHandler = e => {
     e.preventDefault();
-    const addingSucceeded = clickHandler(value);
+    const success = clickHandler(value);
+    const toastTuple = () => {
+      if (currentPage === NEW_CATEGORY) {
+        return [NEW_CATEGORY_SUCCESS, NEW_CATEGORY_FAIL]
+      } else if (EDIT_CATEGORY) {
+        return [EDIT_CATEGORY_SUCCESS, EDIT_CATEGORY_FAIL]
+      }
+    }
     // trigger a toast
-    if (addingSucceeded) {
-      toast(CREATE_TOAST, TOAST_SUCCESS, NEW_CATEGORY_SUCCESS)
+    if (success) {
+      toast(CREATE_TOAST, TOAST_SUCCESS, toastTuple()[0])
     } else {
-      toast(CREATE_TOAST, TOAST_WARNING, NEW_CATEGORY_FAIL)
+      toast(CREATE_TOAST, TOAST_WARNING, toastTuple()[1])
     }
     // clean data
     setValue('')

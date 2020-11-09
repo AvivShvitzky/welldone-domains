@@ -6,32 +6,31 @@ import React, { useEffect } from 'react';
 import Form from '../../components/form/Form'
 
 // consts
-import { NEW_CATEGORY } from '../../consts'
+import { EDIT_CATEGORY } from '../../consts'
 
 // store
 import { useRecoilState } from "recoil";
 import { currentPage as currentPageAtom } from '../../store/atoms'
-import { useAddCategory } from '../../store/mutations'
+import { useEditCategory } from '../../store/mutations'
 
 
-function NewCategory() {
+function EditCategory() {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
-  const addCategory = useAddCategory()
+  const editCategory = useEditCategory()
 
   useEffect(() => {
-    setCurrentPage(NEW_CATEGORY)
+    setCurrentPage(EDIT_CATEGORY)
   }, [])
 
   return (
     <div className="categories">
       <div className="page__content">
         <Form 
-          clickHandler={addCategory}
-          currentPage={currentPage}
+          clickHandler={editCategory}
         />
       </div>
     </div>
   );
 };
 
-export default NewCategory;
+export default EditCategory;

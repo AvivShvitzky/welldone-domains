@@ -3,7 +3,7 @@ import React, { useState, useCallback } from 'react';
 import { useRecoilState } from "recoil";
 
 import { categories as categoriesAtom } from './atoms'
-import { findCategoryIndex } from './utils'
+import { findCategoryIndex, deepCopyArray } from './utils'
 
 export function useAddCategory() {
   const [categories, setCategories] = useRecoilState(categoriesAtom);
@@ -27,7 +27,25 @@ export function useAddCategory() {
     );
     
   return memoizedCallback;
-} 
+}
+
+export function useEditCategory() {
+  const [categories, setCategories] = useRecoilState(categoriesAtom);
+  
+  const memoizedCallback = useCallback(
+    updatedCategoryName => {
+      const categoryIndex = findCategoryIndex(categories, updatedCategoryName)
+      const copiedCategories = deepCopyArray(categories)
+      copiedCategories[categoryIndex].name = updatedCategoryName
+      setCategories(copiedCategories)
+      // return the name for success check
+      return categories[categoryIndex].name
+    },
+    [categories],
+    );
+    
+  return memoizedCallback;
+}
 
 /**
 * checks if a category exists on the categories list.
