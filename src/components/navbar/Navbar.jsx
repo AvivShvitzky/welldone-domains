@@ -19,13 +19,15 @@ import { ICONS_AVAILABILITY, TITLE_OPTIONS } from './Navbar.consts'
 import { useRecoilState } from "recoil";
 import { 
   currentPage as currentPageAtom,
-  currPickedListItem as currPickedListItemAtom
+  currPickedCategory as currPickedCategoryAtom
 } from "../../store/atoms";
+import { useDeleteCategory } from '../../store/mutations'
 
 function Navbar() {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
-  const [currPickedListItem, setCurrPickedListItem] = useRecoilState(currPickedListItemAtom);
-  const category = currPickedListItem
+  const [currPickedCategory, setCurrPickedCategoryAtom] = useRecoilState(currPickedCategoryAtom);
+  const deleteCategory = useDeleteCategory()
+  const category = currPickedCategory
 
   const title = TITLE_OPTIONS[currentPage]
   const iconAvailable = iconType => {
@@ -76,7 +78,10 @@ function Navbar() {
             size="lg"/>
           <span>Edit</span>
         </Link>
-        <div className={`icon__box ${iconAvailable(ICON_DELETE) ? 'icon__box--available' : 'icon__box--unavailable'}`}>
+        <div 
+          className={`icon__box ${iconAvailable(ICON_DELETE) ? 'icon__box--available' : 'icon__box--unavailable'}`}
+          onClick={() => deleteCategory(category)}  
+        >
           <FontAwesomeIcon 
             icon={faTrashAlt} 
             size="lg"/>

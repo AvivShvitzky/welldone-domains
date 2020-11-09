@@ -13,7 +13,7 @@ import { useRecoilState } from "recoil";
 import { 
   categories as categoriesAtom,
   currentPage as currentPageAtom,
-  currPickedListItem as currPickedListItemAtom
+  currPickedCategory as currPickedListItemAtom
 } 
 from '../../store/atoms'
 

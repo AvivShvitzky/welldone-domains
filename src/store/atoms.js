@@ -13,8 +13,8 @@ export const categories = atom({
   default: categoriesData
 });
 
-export const currPickedListItem = atom({
-  key: 'currPickedListItem',
+export const currPickedCategory = atom({
+  key: 'currPickedCategory',
   default: {}
 });
 

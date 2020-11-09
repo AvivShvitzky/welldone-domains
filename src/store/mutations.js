@@ -2,8 +2,16 @@ import React, { useState, useCallback } from 'react';
 
 import { useRecoilState } from "recoil";
 
-import { categories as categoriesAtom } from './atoms'
-import { findCategoryIndex, deepCopyArray } from './utils'
+import { 
+  categories as categoriesAtom, 
+  currPickedCategory as currPickedCategoryAtom 
+} 
+from './atoms'
+import { 
+  findCategoryIndex, 
+  deepCopyArray, 
+  categoryExists 
+} from './utils'
 
 export function useAddCategory() {
   const [categories, setCategories] = useRecoilState(categoriesAtom);
@@ -19,9 +27,8 @@ export function useAddCategory() {
         ]
         setCategories(updatedCategories)
         return true
-      } else{
-        return false
-      }
+      } 
+      return false
     },
     [categories, categoryExists],
     );
@@ -38,7 +45,8 @@ export function useEditCategory() {
       const copiedCategories = deepCopyArray(categories)
       if (categoryIndex === -1) {
         return false
-      } else {
+      } 
+      else {
         copiedCategories[categoryIndex].name = updatedCategoryName
         setCategories(copiedCategories)
         return true
@@ -50,12 +58,24 @@ export function useEditCategory() {
   return memoizedCallback;
 }
 
-/**
-* checks if a category exists on the categories list.
-* @param {Array} categories
-* @param {String} categoryName
-* @returns if the category exists on the categories list.
-*/
-function categoryExists(categories, categoryName) {
-  return findCategoryIndex(categories, categoryName) !== -1
+export function useDeleteCategory() {
+  const [categories, setCategories] = useRecoilState(categoriesAtom);
+  
+  const memoizedCallback = useCallback(
+    currPickedCategory => {
+      const categoryIndex = findCategoryIndex(categories, currPickedCategory.name)
+      if (categoryIndex !== -1) {
+        const copiedCategories = deepCopyArray(categories)
+        copiedCategories.splice(categoryIndex, 1) // removes the category from the categories array
+        const updatedCategories = copiedCategories
+        setCategories(updatedCategories)
+        return true
+      } 
+      return false
+    },
+    [categories],
+    );
+    
+  return memoizedCallback;
 }
+
