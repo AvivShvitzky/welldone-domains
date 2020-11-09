@@ -38,7 +38,7 @@ function Navbar() {
 
       <div className="navbar__icons">
         <Link 
-          to='/new-category' 
+          to={{pathname: iconAvailable(ICON_NEW) ? '/new-category' : ''}} 
           className={`icon__box ${iconAvailable(ICON_NEW) ? 'icon__box--available' : 'icon__box--unavailable'}`}
           onClick={() => setCurrentPage(NEW_CATEGORY)}
         >
@@ -49,7 +49,7 @@ function Navbar() {
         </Link>
         <Link 
           to={{
-            pathname: `/category/${name}`,
+            pathname: iconAvailable(ICON_VIEW) ? `/category/${name}` : '',
             state: { name }
           }} 
           className={`icon__box ${iconAvailable(ICON_VIEW) ? 'icon__box--available' : 'icon__box--unavailable'}`}
