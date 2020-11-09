@@ -17,12 +17,17 @@ import { ICONS_AVAILABILITY, TITLE_OPTIONS } from './Navbar.consts'
 
 // store
 import { useRecoilState } from "recoil";
-import { currentPage as currentPageAtom } from "../../store/atoms";
+import { 
+  currentPage as currentPageAtom,
+  currPickedListItem as currPickedListItemAtom
+} from "../../store/atoms";
 
 function Navbar() {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
+  const [currPickedListItem, setCurrPickedListItem] = useRecoilState(currPickedListItemAtom);
+  const categoryName = currPickedListItem.name
+
   const title = TITLE_OPTIONS[currentPage]
-  const name ='pools'
   const iconAvailable = iconType => {
     return ICONS_AVAILABILITY[currentPage].includes(iconType)
   }
@@ -49,8 +54,8 @@ function Navbar() {
         </Link>
         <Link 
           to={{
-            pathname: iconAvailable(ICON_VIEW) ? `/category/${name}` : '',
-            state: { name }
+            pathname: iconAvailable(ICON_VIEW) ? `/category/${categoryName}` : '',
+            state: { categoryName }
           }} 
           className={`icon__box ${iconAvailable(ICON_VIEW) ? 'icon__box--available' : 'icon__box--unavailable'}`}
         >

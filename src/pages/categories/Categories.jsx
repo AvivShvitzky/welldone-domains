@@ -6,19 +6,21 @@ import './Categories.css';
 import List from '../../components/list/List'
 
 // consts
-import { CATEGORIES } from '../../consts'
+import { CATEGORIES, CATEGORIES_CHECKED } from '../../consts'
 
 // store
 import { useRecoilState } from "recoil"; 
 import { 
   categories as categoriesAtom,
   currentPage as currentPageAtom,
+  currPickedListItem as currPickedListItemAtom
 } 
 from '../../store/atoms'
 
 function Categories(props) {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
   const [categories, setCategories] = useRecoilState(categoriesAtom);
+  const [currPickedListItem, setCurrPickedListItem] = useRecoilState(currPickedListItemAtom);
 
   useEffect(() => {
     setCurrentPage(CATEGORIES)
@@ -32,6 +34,11 @@ function Categories(props) {
     }
   }
 
+  const listItemClickHandler = (listItem) => {
+    setCurrentPage(CATEGORIES_CHECKED)
+    setCurrPickedListItem(listItem)
+  }
+
   return (
     <div 
       className="categories"
@@ -40,7 +47,7 @@ function Categories(props) {
       <div className="page__content">
         <List
           data={categories}
-          onClickHandler={setCurrentPage}
+          onClickHandler={listItemClickHandler}
         />
       </div>
     </div>

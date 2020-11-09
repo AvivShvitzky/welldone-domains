@@ -13,6 +13,11 @@ export const categories = atom({
   default: categoriesData
 });
 
+export const currPickedListItem = atom({
+  key: 'currPickedListItem',
+  default: {}
+});
+
 // export const view = atom({
 //   key: "view",
 //   default: "monthly",

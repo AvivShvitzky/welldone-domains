@@ -28,7 +28,12 @@ function ViewCategory(props) {
   return (
     <div className="categories">
       <div className="page__content">
-        {category.name}
+        <div className="card" style={{width: '18rem', display: 'inline-block'}}>
+          <div className="card-body">
+            <h5 className="card-title">{category.name}</h5>
+            <p className="card-text">This is a mock text for a category.</p>
+          </div>
+        </div>
       </div>
     </div>
   );
