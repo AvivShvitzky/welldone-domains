@@ -36,10 +36,8 @@ function Navbar() {
 
   return (
     <nav className="navbar bg-white">
-      <span 
-        to='/categories'
-        className="title__link"
-      >
+      <span className="title">
+        
         <Title>{title}</Title>
       </span>
 
@@ -53,6 +51,7 @@ function Navbar() {
             size="lg"/>
           <span>Home</span>
         </Link>
+        <span className="vl"></span>
         <Link 
           to={{pathname: iconAvailable(ICON_NEW) ? '/new-category' : ''}} 
           className={`icon__box ${iconAvailable(ICON_NEW) ? 'icon__box--available' : 'icon__box--unavailable'}`}

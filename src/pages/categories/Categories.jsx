@@ -41,7 +41,7 @@ function Categories(props) {
 
   return (
     <div 
-      className="categories"
+      className="page"
       onClick={event => clickHandler(event)}
     >
       <div className="page__content">

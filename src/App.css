@@ -1,6 +1,9 @@
+.page {
+  text-align: center;
+}
+
 .page__content {
   width: 500px;
   margin: auto;
-  text-align: center;
 }
 
