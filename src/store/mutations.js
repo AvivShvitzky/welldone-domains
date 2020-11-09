@@ -33,13 +33,18 @@ export function useEditCategory() {
   const [categories, setCategories] = useRecoilState(categoriesAtom);
   
   const memoizedCallback = useCallback(
-    updatedCategoryName => {
-      const categoryIndex = findCategoryIndex(categories, updatedCategoryName)
+    (originalCategoryName, updatedCategoryName) => {
+      const categoryIndex = findCategoryIndex(categories, originalCategoryName)
       const copiedCategories = deepCopyArray(categories)
-      copiedCategories[categoryIndex].name = updatedCategoryName
-      setCategories(copiedCategories)
-      // return the name for success check
-      return categories[categoryIndex].name
+      console.log(categoryIndex);
+      console.log(copiedCategories);
+      if (categoryIndex === -1) {
+        return false
+      } else {
+        copiedCategories[categoryIndex].name = updatedCategoryName
+        setCategories(copiedCategories)
+        return true
+      }
     },
     [categories],
     );

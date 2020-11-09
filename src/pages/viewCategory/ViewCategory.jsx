@@ -11,18 +11,15 @@ import { VIEW_CATEGORY } from '../../consts'
 // store
 import { useRecoilState } from "recoil";
 import { currentPage as currentPageAtom } from '../../store/atoms'
-import { useFindCategory } from '../../store/getters'
-
 
 function ViewCategory(props) {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
   const [category, setCategory] = useState({ name: '' })
-  const findCategory = useFindCategory()
 
   useEffect(() => {
-    const categoryName = props.match.params.name
+    const categoryParam = props.match.params
+    setCategory(categoryParam)
     setCurrentPage(VIEW_CATEGORY)
-    setCategory(findCategory(categoryName))
   }, [])
 
   return (

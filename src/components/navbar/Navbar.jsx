@@ -25,7 +25,7 @@ import {
 function Navbar() {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
   const [currPickedListItem, setCurrPickedListItem] = useRecoilState(currPickedListItemAtom);
-  const categoryName = currPickedListItem.name
+  const category = currPickedListItem
 
   const title = TITLE_OPTIONS[currentPage]
   const iconAvailable = iconType => {
@@ -54,8 +54,8 @@ function Navbar() {
         </Link>
         <Link 
           to={{
-            pathname: iconAvailable(ICON_VIEW) ? `/category/${categoryName}` : '',
-            state: { categoryName }
+            pathname: iconAvailable(ICON_VIEW) ? `/category/${category.name}` : '',
+            state: { category }
           }} 
           className={`icon__box ${iconAvailable(ICON_VIEW) ? 'icon__box--available' : 'icon__box--unavailable'}`}
         >
@@ -64,12 +64,18 @@ function Navbar() {
             size="lg"/>
           <span>View</span>
         </Link>
-        <div className={`icon__box ${iconAvailable(ICON_EDIT) ? 'icon__box--available' : 'icon__box--unavailable'}`}>
+        <Link 
+          to={{
+            pathname: iconAvailable(ICON_EDIT) ? `/edit-category/${category.name}` : '',
+            state: { category }
+          }} 
+          className={`icon__box ${iconAvailable(ICON_EDIT) ? 'icon__box--available' : 'icon__box--unavailable'}`}
+        >
           <FontAwesomeIcon 
             icon={faEdit} 
             size="lg"/>
           <span>Edit</span>
-        </div>
+        </Link>
         <div className={`icon__box ${iconAvailable(ICON_DELETE) ? 'icon__box--available' : 'icon__box--unavailable'}`}>
           <FontAwesomeIcon 
             icon={faTrashAlt} 

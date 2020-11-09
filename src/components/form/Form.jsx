@@ -17,8 +17,8 @@ import { NEW_CATEGORY, EDIT_CATEGORY } from '../../consts'
 import useToast from '../toast/Toast'
 
 
-function Form({ clickHandler, currentPage, inputValue = ''}) {
-  const [value, setValue] = useState(inputValue)
+function Form({ clickHandler, currentPage, categoryName = ''}) {
+  const [value, setValue] = useState(categoryName)
   const toast = useToast()
 
   // clean up
