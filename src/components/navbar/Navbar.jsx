@@ -11,8 +11,6 @@ import Title from '../title/Title'
 // consts
 import {
   ICON_NEW, ICON_VIEW, ICON_EDIT, ICON_DELETE, ICON_HOME,
-  CATEGORIES, CATEGORIES_CHECKED, NEW_CATEGORY, EDIT_CATEGORY, VIEW_CATEGORY,
-  LOCATIONS, LOCATIONS_CHECKED
 } from '../../consts'
 import { ICONS_AVAILABILITY, TITLE_OPTIONS } from './Navbar.consts'
 
@@ -56,7 +54,6 @@ function Navbar() {
         <Link 
           to={{pathname: iconAvailable(ICON_NEW) ? '/new-category' : ''}} 
           className={`icon__box ${iconAvailable(ICON_NEW) ? 'icon__box--available' : 'icon__box--unavailable'}`}
-          onClick={() => setCurrentPage(NEW_CATEGORY)}
         >
           <FontAwesomeIcon 
             icon={faPlus} 
