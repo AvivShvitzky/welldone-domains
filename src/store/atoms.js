@@ -23,3 +23,12 @@ export const currPickedCategory = atom({
   default: {}
 });
 
+export const locations = atom({
+  key: 'locations',
+  default: categoriesData
+});
+
+export const currPickedLocation = atom({
+  key: 'currPickedLocation',
+  default: {}
+});

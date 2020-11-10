@@ -6,7 +6,7 @@ const RouterLink = ({ children, entity, path, onClickHandler }) => {
   return (
     <Link 
       to={path}
-      className="btn btn-primary"
+      className="btn btn-link"
       onClick={() => onClickHandler(entity)}
     >
       {children}

@@ -2,15 +2,15 @@
 import React, { useEffect, useState } from 'react';
 
 // components
-import Form from '../../components/form/Form'
+import Form from '../../../components/form/Form'
 
 // consts
-import { EDIT_CATEGORY } from '../../consts'
+import { EDIT_CATEGORY } from '../../../consts'
 
 // store
 import { useRecoilState } from "recoil";
-import { currentPage as currentPageAtom } from '../../store/atoms'
-import { useEditCategory } from '../../store/mutations'
+import { currentPage as currentPageAtom } from '../../../store/atoms'
+import { useEditCategory } from '../../../store/mutations'
 
 
 function EditCategory(props) {

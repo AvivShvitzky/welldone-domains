@@ -2,14 +2,13 @@
 import React, { useEffect, useState } from 'react';
 
 // components
-import Form from '../../components/form/Form'
 
 // consts
-import { VIEW_CATEGORY } from '../../consts'
+import { VIEW_CATEGORY } from '../../../consts'
 
 // store
 import { useRecoilState } from "recoil";
-import { currentPage as currentPageAtom } from '../../store/atoms'
+import { currentPage as currentPageAtom } from '../../../store/atoms'
 
 function ViewCategory(props) {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);

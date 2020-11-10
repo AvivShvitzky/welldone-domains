@@ -1,12 +1,14 @@
 // libraries and css
 import React, { useEffect } from 'react';
-import './Categories.css';
 
 // components
-import List from '../../components/list/List'
+import List from '../../../components/list/List'
 
 // consts
-import { CATEGORIES, CATEGORIES_CHECKED } from '../../consts'
+import { CATEGORIES, CATEGORIES_CHECKED } from '../../../consts'
+
+// utils
+import { allowParentEvent } from '../../../store/utils'
 
 // store
 import { useRecoilState } from "recoil"; 
@@ -15,7 +17,7 @@ import {
   currentPage as currentPageAtom,
   currPickedCategory as currPickedListItemAtom
 } 
-from '../../store/atoms'
+from '../../../store/atoms'
 
 function Categories(props) {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
@@ -28,10 +30,7 @@ function Categories(props) {
 
   // allows the parent div to fire a click event seperate from his childs
   const clickHandler = event => {
-    event.preventDefault();
-    if (event.target === event.currentTarget) {
-      setCurrentPage(CATEGORIES)
-    }
+    allowParentEvent(event, CATEGORIES, setCurrentPage)
   }
 
   const listItemClickHandler = (listItem) => {

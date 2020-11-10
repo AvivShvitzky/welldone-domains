@@ -7,10 +7,13 @@ import {
   Redirect
 } from 'react-router-dom';
 
-import Categories from './pages/categories/Categories'
-import NewCategory from './pages/newCategory/NewCategory'
-import ViewCategory from './pages/viewCategory/ViewCategory'
-import EditCategory from './pages/editCategory/EditCategory'
+import Categories from './pages/categoriesPages/categories/Categories'
+import NewCategory from './pages/categoriesPages/newCategory/NewCategory'
+import ViewCategory from './pages/categoriesPages/viewCategory/ViewCategory'
+import EditCategory from './pages/categoriesPages/editCategory/EditCategory'
+
+import Locations from './pages/locationsPages/locations/Locations'
+
 import Navbar from './components/navbar/Navbar'
 import Footer from './components/footer/Footer'
 
@@ -34,6 +37,10 @@ const Router = () => {
         />
         <Route path="/edit-category/:name"
           component={EditCategory}
+        />
+
+        <Route exact default path="/locations"
+          component={Locations}
         />
       </Switch>
       <Footer />
