@@ -1,6 +1,6 @@
-export const columnsTeams = [
+export const columns = [
   {
-  Header: 'Football Teams',
+  Header: 'Locations List',
     columns: [
       {
         Header: 'Name',

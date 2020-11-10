@@ -6,7 +6,7 @@ import Table from '../../../components/table/Table'
 
 // consts
 import { LOCATIONS, LOCATIONS_CHECKED } from '../../../consts'
-import { columnsTeams } from '../../../components/table/columns'
+import { columns } from '../../../components/table/columns'
 
 // utils
 import { allowParentEvent } from '../../../store/utils'
@@ -53,7 +53,7 @@ function Locations(props) {
     >
       <div className="page__content">
         <Table
-          columns={columnsTeams}
+          columns={columns}
           data={tmp}
           onClickHandler={listItemClickHandler}
         />
