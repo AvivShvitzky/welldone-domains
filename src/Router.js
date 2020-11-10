@@ -12,7 +12,7 @@ import NewCategory from './pages/newCategory/NewCategory'
 import ViewCategory from './pages/viewCategory/ViewCategory'
 import EditCategory from './pages/editCategory/EditCategory'
 import Navbar from './components/navbar/Navbar'
-
+import Footer from './components/footer/Footer'
 
 const Router = () => {
 
@@ -36,6 +36,7 @@ const Router = () => {
           component={EditCategory}
         />
       </Switch>
+      <Footer />
     </BrowserRouter>
   )
 }

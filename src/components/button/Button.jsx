@@ -1,10 +1,15 @@
 // libraries and css
 import React from 'react';
-import './Button.css';
+import './Button.css'
 
-const Button = ({ children }) => {
+const Button = ({ children, onClickHandler }) => {
   return (
-    <button className="btn btn-primary">{children}</button>
+    <button 
+      className="btn btn-primary"
+      onClick={() => onClickHandler()}
+    >
+      {children}
+    </button>
   );
 };
 

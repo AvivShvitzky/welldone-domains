@@ -13,3 +13,13 @@ export const NEW_CATEGORY = 'NEW_CATEGORY'
 export const EDIT_CATEGORY = 'EDIT_CATEGORY'
 export const VIEW_CATEGORY = 'VIEW_CATEGORY'
 export const DELETE_CATEGORY = 'DELETE_CATEGORY'
+
+// entities
+export const ENTITY_CATEGORIES = 'ENTITY_CATEGORIES'
+export const ENTITY_LOCATIONS = 'ENTITY_LOCATIONS'
+
+// paths
+export const PATH_CATEGORY = '/categories'
+export const PATH_LOCATIONS = '/locations'
+
+
