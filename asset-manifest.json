@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/welldone-domains/static/css/main.76d25157.chunk.css",
+    "main.js": "/welldone-domains/static/js/main.63ed877c.chunk.js",
+    "main.js.map": "/welldone-domains/static/js/main.63ed877c.chunk.js.map",
+    "runtime-main.js": "/welldone-domains/static/js/runtime-main.478f9344.js",
+    "runtime-main.js.map": "/welldone-domains/static/js/runtime-main.478f9344.js.map",
+    "static/css/2.9daacf83.chunk.css": "/welldone-domains/static/css/2.9daacf83.chunk.css",
+    "static/js/2.86c67285.chunk.js": "/welldone-domains/static/js/2.86c67285.chunk.js",
+    "static/js/2.86c67285.chunk.js.map": "/welldone-domains/static/js/2.86c67285.chunk.js.map",
+    "index.html": "/welldone-domains/index.html",
+    "static/css/2.9daacf83.chunk.css.map": "/welldone-domains/static/css/2.9daacf83.chunk.css.map",
+    "static/css/main.76d25157.chunk.css.map": "/welldone-domains/static/css/main.76d25157.chunk.css.map",
+    "static/js/2.86c67285.chunk.js.LICENSE.txt": "/welldone-domains/static/js/2.86c67285.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.478f9344.js",
+    "static/css/2.9daacf83.chunk.css",
+    "static/js/2.86c67285.chunk.js",
+    "static/css/main.76d25157.chunk.css",
+    "static/js/main.63ed877c.chunk.js"
+  ]
+}
