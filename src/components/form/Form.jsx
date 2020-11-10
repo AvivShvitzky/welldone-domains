@@ -1,6 +1,8 @@
 // libraries and css
 import React, { useState, useEffect } from 'react';
-import './Form.css';
+
+// components
+import Input from '../input/Input'
 
 // consts
 import { 
@@ -20,6 +22,10 @@ import useToast from '../toast/Toast'
 function Form({ clickHandler, currentPage, categoryName}) {
   const [value, setValue] = useState('')
   const toast = useToast()
+
+  const setValueHandler = value => {
+    setValue(value)
+  }
 
   // initial
   useEffect(() => {
@@ -58,14 +64,10 @@ function Form({ clickHandler, currentPage, categoryName}) {
   return (
     <form>
       <div className="form-group">
-        <label htmlFor="categoryName">Category Name</label>
-        <input 
-          value={value} 
-          onChange={(e) => setValue(e.target.value)} 
-          type="text" 
-          className="form-control input" 
-          id="categoryName" 
-          aria-describedby="categoryHelp" 
+        <Input 
+          value={value}
+          label="Category Name"
+          onChangeHandler={setValueHandler}
         />
         <small id="categoryHelp" className="form-text text-muted">Enter a name for a category.</small>
       </div>
