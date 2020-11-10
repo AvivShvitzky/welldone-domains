@@ -2,10 +2,11 @@
 import React, { useEffect } from 'react';
 
 // components
-import List from '../../../components/list/List'
+import Table from '../../../components/table/Table'
 
 // consts
 import { LOCATIONS, LOCATIONS_CHECKED } from '../../../consts'
+import { columnsTeams } from '../../../components/table/columns'
 
 // utils
 import { allowParentEvent } from '../../../store/utils'
@@ -23,6 +24,13 @@ function Locations(props) {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
   const [locations, setLocations] = useRecoilState(locationsAtom);
   const [currPickedListItem, setCurrPickedListItem] = useRecoilState(currPickedListItemAtom);
+
+  const tmp = [{
+    Name: 't',
+    Category: 'c',
+    Coordinates: 'co',
+    Address: 'a'
+  }]
 
   useEffect(() => {
     setCurrentPage(LOCATIONS)
@@ -44,8 +52,9 @@ function Locations(props) {
       onClick={event => clickHandler(event)}
     >
       <div className="page__content">
-        <List
-          data={locations}
+        <Table
+          columns={columnsTeams}
+          data={tmp}
           onClickHandler={listItemClickHandler}
         />
       </div>
