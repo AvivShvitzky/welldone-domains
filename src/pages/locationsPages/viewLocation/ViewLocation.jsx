@@ -16,6 +16,7 @@ function ViewCategory(props) {
 
   useEffect(() => {
     const locationParam = props.match.params
+    console.log(locationParam);
     setLocation(locationParam)
     setCurrentPage(VIEW_LOCATION)
   }, [])

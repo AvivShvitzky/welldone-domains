@@ -11,6 +11,7 @@ import Title from '../title/Title'
 // consts
 import {
   ICON_NEW, ICON_VIEW, ICON_EDIT, ICON_DELETE, ICON_HOME,
+  ENTITY_CATEGORIES
 } from '../../consts'
 import { ICONS_AVAILABILITY, TITLE_OPTIONS, NAVIGATE_OPTIONS } from './Navbar.consts'
 
@@ -19,6 +20,7 @@ import { useRecoilState } from "recoil";
 import { 
   currentPage as currentPageAtom,
   currPickedCategory as currPickedCategoryAtom,
+  currPickedLocation as currPickedLocationAtom,
   currentEntity as currentEntityAtom
 } from "../../store/atoms";
 import { useDeleteCategory } from '../../store/mutations'
@@ -26,9 +28,11 @@ import { useDeleteCategory } from '../../store/mutations'
 function Navbar() {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
   const [currPickedCategory, setCurrPickedCategoryAtom] = useRecoilState(currPickedCategoryAtom);
+  const [currPickedLocation, setCurrPickedLocation] = useRecoilState(currPickedLocationAtom);
   const [currentEntity, setCurrentEntity] = useRecoilState(currentEntityAtom)
   const deleteCategory = useDeleteCategory()
   const category = currPickedCategory
+  const stateForNavigation = currentEntity === ENTITY_CATEGORIES ? category : currPickedLocation
 
   const title = TITLE_OPTIONS[currentPage]
   const iconAvailable = iconType => {
@@ -75,8 +79,8 @@ function Navbar() {
         </Link>
         <Link 
           to={{
-            pathname: navigateTo(ICON_VIEW, category.name),
-            state: { category }
+            pathname: navigateTo(ICON_VIEW, stateForNavigation.name),
+            state: { stateForNavigation }
           }} 
           className={`icon__box ${iconAvailable(ICON_VIEW) ? 'icon__box--available' : 'icon__box--unavailable'}`}
         >
