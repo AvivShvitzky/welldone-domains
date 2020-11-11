@@ -19,20 +19,21 @@ import { NEW_CATEGORY, EDIT_CATEGORY } from '../../../consts'
 
 import useToast from '../../toast/Toast'
 
-function Form({ clickHandler, currentPage, categoryName}) {
-  const [value, setValue] = useState('')
-  const toast = useToast()
+function Form({ clickHandler, currentPage, _locationName}) {
+  const [locationName, setLocationName] = useState('')
+  const [categoryName, setCategoryName] = useState('')
+  const [address, setAddress] = useState('')
+  const [longitude, setLongitude] = useState('')
+  const [latitude, setLatitude] = useState('')
 
-  const setValueHandler = value => {
-    setValue(value)
-  }
+  const toast = useToast()
 
   // initial
   useEffect(() => {
-    if (categoryName) {
-      setValue(categoryName)
+    if (_locationName) {
+      setLocationName(_locationName)
     }
-  },[categoryName])
+  },[_locationName])
 
   // clean up
   useEffect(() => {
@@ -65,11 +66,34 @@ function Form({ clickHandler, currentPage, categoryName}) {
     <form>
       <div className="form-group">
         <Input 
-          value={value}
-          label="Category Name"
-          onChangeHandler={setValueHandler}
+          value={locationName}
+          label="Location Name"
+          onChangeHandler={setLocationName}
         />
-        <small id="categoryHelp" className="form-text text-muted">Enter a name for a category.</small>
+
+        <Input 
+          value={categoryName}
+          label="Category Name"
+          onChangeHandler={setCategoryName}
+        />
+
+        <Input 
+          value={address}
+          label="Address"
+          onChangeHandler={setAddress}
+        />
+
+        <Input 
+          value={longitude}
+          label="Longitude"
+          onChangeHandler={setLongitude}
+        />
+
+        <Input 
+          value={latitude}
+          label="Latitude"
+          onChangeHandler={setLatitude}
+        />
       </div>
       <button onClick={onSubmitHandler} type="submit" className="btn btn-primary">Submit</button>
     </form>
