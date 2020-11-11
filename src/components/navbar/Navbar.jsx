@@ -18,13 +18,15 @@ import { ICONS_AVAILABILITY, TITLE_OPTIONS, NAVIGATE_OPTIONS } from './Navbar.co
 import { useRecoilState } from "recoil";
 import { 
   currentPage as currentPageAtom,
-  currPickedCategory as currPickedCategoryAtom
+  currPickedCategory as currPickedCategoryAtom,
+  currentEntity as currentEntityAtom
 } from "../../store/atoms";
 import { useDeleteCategory } from '../../store/mutations'
 
 function Navbar() {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
   const [currPickedCategory, setCurrPickedCategoryAtom] = useRecoilState(currPickedCategoryAtom);
+  const [currentEntity, setCurrentEntity] = useRecoilState(currentEntityAtom)
   const deleteCategory = useDeleteCategory()
   const category = currPickedCategory
 
@@ -33,8 +35,15 @@ function Navbar() {
     return ICONS_AVAILABILITY[currentPage].includes(iconType)
   }
 
-  const navigateTo = iconType => {
-
+  const navigateTo = (iconType, toParam) => {
+    if (iconAvailable(iconType)) {
+      let to = NAVIGATE_OPTIONS[currentEntity][iconType]
+      if (toParam) {
+        to = to + toParam
+      }
+      return to
+    }
+    return ''
   }
 
   return (
@@ -56,7 +65,7 @@ function Navbar() {
         </Link>
         <span className="vl"></span>
         <Link 
-          to={{pathname: iconAvailable(ICON_NEW) ? '/new-category' : ''}} 
+          to={{pathname: navigateTo(ICON_NEW)}} 
           className={`icon__box ${iconAvailable(ICON_NEW) ? 'icon__box--available' : 'icon__box--unavailable'}`}
         >
           <FontAwesomeIcon 
@@ -66,7 +75,7 @@ function Navbar() {
         </Link>
         <Link 
           to={{
-            pathname: iconAvailable(ICON_VIEW) ? `/category/${category.name}` : '',
+            pathname: navigateTo(ICON_VIEW, category.name),
             state: { category }
           }} 
           className={`icon__box ${iconAvailable(ICON_VIEW) ? 'icon__box--available' : 'icon__box--unavailable'}`}
@@ -78,7 +87,7 @@ function Navbar() {
         </Link>
         <Link 
           to={{
-            pathname: iconAvailable(ICON_EDIT) ? `/edit-category/${category.name}` : '',
+            pathname: navigateTo(ICON_EDIT, category.name),
             state: { category }
           }} 
           className={`icon__box ${iconAvailable(ICON_EDIT) ? 'icon__box--available' : 'icon__box--unavailable'}`}
