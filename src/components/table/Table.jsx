@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components'
-import { useTable, usePagination, useSortBy } from 'react-table'
+import { useTable, usePagination, useSortBy, useFilters } from 'react-table'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Table.css'
 
@@ -26,6 +26,7 @@ function Table({ columns, data, onClickHandler }) {
           data,
           initialState: { pageIndex: 0, pageSize: 5 },
       },
+      useFilters,
       useSortBy,
       usePagination,
   )
@@ -40,6 +41,7 @@ function Table({ columns, data, onClickHandler }) {
                           {headerGroup.headers.map(column => (
                               <th {...column.getHeaderProps(column.getSortByToggleProps())}
                               >
+                                <div>{column.canFilter ? column.render('Filter'): null}</div>
                                 <span style={{userSelect: 'none'}}>
                                   {column.render('Header')}
                                 </span>
@@ -127,6 +129,19 @@ function Table({ columns, data, onClickHandler }) {
               </select>
           </ul>
       </div >
+  )
+}
+
+export function ColumnFilter({ column }) {
+  const { filterValue, setFilter } = column
+  return (
+    <span>
+      Search:{' '}
+      <input 
+        value={filterValue || ''}
+        onChange={e => setFilter(e.target.value)}
+      />
+    </span>
   )
 }
 
