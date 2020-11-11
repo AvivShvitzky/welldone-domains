@@ -59,7 +59,7 @@ function Navbar() {
 
       <div className="navbar__icons">
         <Link 
-          to='/categories' 
+          to={{pathname: navigateTo(ICON_HOME)}} 
           className={`icon__box ${iconAvailable(ICON_HOME) ? 'icon__box--available' : 'icon__box--unavailable'}`}
         >
           <FontAwesomeIcon 
