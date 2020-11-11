@@ -15,8 +15,12 @@ export const columns = [
         accessor: 'Address',
       },
       {
-        Header: 'Coordinates',
-        accessor: 'Coordinates',
+        Header: 'Longitude',
+        accessor: 'Longitude',
+      },
+      {
+        Header: 'Latitude',
+        accessor: 'Latitude',
       },
     ],
   },

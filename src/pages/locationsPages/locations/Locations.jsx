@@ -54,7 +54,7 @@ function Locations(props) {
       <div className="page__content">
         <Table
           columns={columns}
-          data={tmp}
+          data={locations}
           onClickHandler={listItemClickHandler}
         />
       </div>

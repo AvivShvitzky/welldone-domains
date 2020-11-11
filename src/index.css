@@ -16,8 +16,13 @@ code {
 
 .page__content {
   text-align: center;
-  width: 500px;
+  width: 600px;
   margin: auto;
+}
+
+/* table css */
+.kJBNWe {
+  width: 100%!important;
 }
 
 .footer {
