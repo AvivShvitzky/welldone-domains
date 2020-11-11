@@ -16,12 +16,14 @@ import { useRecoilState } from "recoil";
 import { 
   locations as locationsAtom,
   currentPage as currentPageAtom,
-  currPickedLocation as currPickedListItemAtom
+  currPickedLocation as currPickedListItemAtom,
+  currentEntity as currentEntityAtom
 } 
 from '../../../store/atoms'
 
 function Locations(props) {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
+  const [currentEntity, setCurrentEntity] = useRecoilState(currentEntityAtom);
   const [locations, setLocations] = useRecoilState(locationsAtom);
   const [currPickedListItem, setCurrPickedListItem] = useRecoilState(currPickedListItemAtom);
 
@@ -34,6 +36,7 @@ function Locations(props) {
 
   useEffect(() => {
     setCurrentPage(LOCATIONS)
+    setCurrentEntity(LOCATIONS)
   }, [])
 
   // allows the parent div to fire a click event seperate from his childs
