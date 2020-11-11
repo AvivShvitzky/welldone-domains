@@ -8,19 +8,19 @@ export const columns = [
       },
       {
         Header: 'Category',
-        accessor: 'Category',
+        accessor: 'category',
       },
       {
         Header: 'Address',
-        accessor: 'Address',
+        accessor: 'address',
       },
       {
         Header: 'Longitude',
-        accessor: 'Longitude',
+        accessor: 'longitude',
       },
       {
         Header: 'Latitude',
-        accessor: 'Latitude',
+        accessor: 'latitude',
       },
     ],
   },

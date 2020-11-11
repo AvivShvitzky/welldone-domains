@@ -10,12 +10,12 @@ import { NEW_LOCATION } from '../../../consts'
 // store
 import { useRecoilState } from "recoil";
 import { currentPage as currentPageAtom } from '../../../store/atoms'
-import { useAddCategory } from '../../../store/mutations'
+import { useAddLocation } from '../../../store/mutations'
 
 
 function NewCategory() {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
-  const addCategory = useAddCategory()
+  const addLocation = useAddLocation()
 
   useEffect(() => {
     setCurrentPage(NEW_LOCATION)
@@ -25,7 +25,7 @@ function NewCategory() {
     <div className="categories">
       <div className="page__content">
         <Form 
-          clickHandler={addCategory}
+          clickHandler={addLocation}
           currentPage={currentPage}
         />
       </div>

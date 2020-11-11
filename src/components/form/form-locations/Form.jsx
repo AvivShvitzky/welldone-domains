@@ -44,7 +44,13 @@ function Form({ clickHandler, currentPage, _locationName}) {
 
   const onSubmitHandler = e => {
     e.preventDefault();
-    const success = clickHandler(value);
+    const success = clickHandler({
+      name: locationName,
+      category: categoryName,
+      address,
+      longitude,
+      latitude
+    });
     const toastTuple = () => {
       if (currentPage === NEW_CATEGORY) {
         return [NEW_CATEGORY_SUCCESS, NEW_CATEGORY_FAIL]
@@ -59,7 +65,11 @@ function Form({ clickHandler, currentPage, _locationName}) {
       toast(CREATE_TOAST, TOAST_WARNING, toastTuple()[1])
     }
     // clean data
-    setValue('')
+    setLocationName('')
+    setCategoryName('')
+    setAddress('')
+    setLongitude('')
+    setLatitude('')
   }
  
   return (

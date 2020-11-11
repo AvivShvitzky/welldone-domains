@@ -30,7 +30,7 @@ function Locations(props) {
   useEffect(() => {
     setCurrentPage(LOCATIONS)
     setCurrentEntity(ENTITY_LOCATIONS)
-  }, [])
+  }, [locations])
 
   // allows the parent div to fire a click event seperate from his childs
   const clickHandler = event => {
