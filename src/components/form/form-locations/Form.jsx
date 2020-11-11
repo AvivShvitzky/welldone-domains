@@ -21,7 +21,7 @@ import { NEW_CATEGORY, EDIT_CATEGORY } from '../../../consts'
 
 import useToast from '../../toast/Toast'
 
-function Form({ clickHandler, currentPage, categories, _locationName}) {
+function Form({ clickHandler, currentPage, categories, location }) {
   const [locationName, setLocationName] = useState('')
   const [categoryName, setCategoryName] = useState('')
   const [address, setAddress] = useState('')
@@ -32,10 +32,14 @@ function Form({ clickHandler, currentPage, categories, _locationName}) {
 
   // initial
   useEffect(() => {
-    if (_locationName) {
-      setLocationName(_locationName)
+    if (location) {
+      setLocationName(location.name)
+      setCategoryName(location.category)
+      setAddress(location.address)
+      setLongitude(location.longitude)
+      setLatitude(location.latitude)
     }
-  },[_locationName])
+  },[location])
 
   // clean up
   useEffect(() => {

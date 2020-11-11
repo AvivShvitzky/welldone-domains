@@ -9,13 +9,18 @@ import { EDIT_LOCATION } from '../../../consts'
 
 // store
 import { useRecoilState } from "recoil";
-import { currentPage as currentPageAtom, currPickedLocation } from '../../../store/atoms'
+import { 
+  currentPage as currentPageAtom, 
+  categories as categoriesAtom, 
+  currPickedLocation 
+} from '../../../store/atoms'
 import { useEditLocation } from '../../../store/mutations'
 
 
 function EditCategory(props) {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
   const [location, setLocation] = useRecoilState(currPickedLocation);
+  const [categories, setCategories] = useRecoilState(categoriesAtom);
   const editLocation = useEditLocation()
 
   useEffect(() => {
@@ -32,7 +37,8 @@ function EditCategory(props) {
         <Form 
           clickHandler={editClickHandler}
           currentPage={currentPage}
-          LocationName={location.name}
+          location={location}
+          categories={categories}
         />
       </div>
     </div>

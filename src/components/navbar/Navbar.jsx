@@ -31,7 +31,7 @@ function Navbar() {
   const [currPickedLocation, setCurrPickedLocation] = useRecoilState(currPickedLocationAtom);
   const [currentEntity, setCurrentEntity] = useRecoilState(currentEntityAtom)
   const deleteCategory = useDeleteCategory()
-  
+
   const dataForNavigation = currentEntity === ENTITY_CATEGORIES ? currPickedCategory : currPickedLocation
 
   const title = TITLE_OPTIONS[currentPage]
@@ -91,8 +91,8 @@ function Navbar() {
         </Link>
         <Link 
           to={{
-            pathname: navigateTo(ICON_EDIT, currPickedCategory.name),
-            state: { currPickedCategory }
+            pathname: navigateTo(ICON_EDIT, dataForNavigation.name),
+            state: { dataForNavigation }
           }} 
           className={`icon__box ${iconAvailable(ICON_EDIT) ? 'icon__box--available' : 'icon__box--unavailable'}`}
         >
