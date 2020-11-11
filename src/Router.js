@@ -13,6 +13,9 @@ import ViewCategory from './pages/categoriesPages/viewCategory/ViewCategory'
 import EditCategory from './pages/categoriesPages/editCategory/EditCategory'
 
 import Locations from './pages/locationsPages/locations/Locations'
+import NewLocation from './pages/locationsPages/newLocation/NewLocation'
+import ViewLocation from './pages/locationsPages/viewLocation/ViewLocation'
+import EditLocation from './pages/locationsPages/editLocation/EditLocation'
 
 import Navbar from './components/navbar/Navbar'
 import Footer from './components/footer/Footer'
@@ -41,6 +44,15 @@ const Router = () => {
 
         <Route exact default path="/locations"
           component={Locations}
+        />
+        <Route exact default path="/new-location"
+          component={NewLocation}
+        />
+        <Route path="/location/:name"
+          component={ViewLocation}
+        />
+        <Route path="/edit-location/:name"
+          component={EditLocation}
         />
       </Switch>
       <Footer />

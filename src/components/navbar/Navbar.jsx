@@ -12,7 +12,7 @@ import Title from '../title/Title'
 import {
   ICON_NEW, ICON_VIEW, ICON_EDIT, ICON_DELETE, ICON_HOME,
 } from '../../consts'
-import { ICONS_AVAILABILITY, TITLE_OPTIONS } from './Navbar.consts'
+import { ICONS_AVAILABILITY, TITLE_OPTIONS, NAVIGATE_OPTIONS } from './Navbar.consts'
 
 // store
 import { useRecoilState } from "recoil";
@@ -31,6 +31,10 @@ function Navbar() {
   const title = TITLE_OPTIONS[currentPage]
   const iconAvailable = iconType => {
     return ICONS_AVAILABILITY[currentPage].includes(iconType)
+  }
+
+  const navigateTo = iconType => {
+
   }
 
   return (

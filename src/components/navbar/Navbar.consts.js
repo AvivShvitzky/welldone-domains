@@ -22,5 +22,21 @@ export const TITLE_OPTIONS = {
   EDIT_CATEGORY: 'Edit Category',
   VIEW_CATEGORY: 'View Category',
   LOCATIONS: 'Locations',
-  LOCATIONS_CHECKED: 'Locations'
+  LOCATIONS_CHECKED: 'Locations',
+  NEW_LOCATION: 'New Location', 
+  EDIT_LOCATION: 'Edit Location',
+  VIEW_LOCATION: 'View Location',
+}
+
+export const NAVIGATE_OPTIONS = {
+  CATEGORIES: {
+    ICON_NEW: '/new-category', 
+    ICON_VIEW: '/category/',
+    ICON_EDIT: '/edit-category/',
+  },
+  LOCATIONS: {
+    ICON_NEW: '/new-location', 
+    ICON_VIEW: '/location/',
+    ICON_EDIT: '/edit-location/',
+  }
 }

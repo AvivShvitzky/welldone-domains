@@ -2,8 +2,9 @@ import React from "react";
 import styled from 'styled-components'
 import { useTable, usePagination, useSortBy } from 'react-table'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Table.css'
 
-function Table({ columns, data }) {
+function Table({ columns, data, onClickHandler }) {
   const {
       getTableProps,
       getTableBodyProps,
@@ -31,7 +32,7 @@ function Table({ columns, data }) {
 
   // Render the UI for your table
   return (
-      <TableWrapper>
+      <div>
           <table className="table" {...getTableProps()}>
               <thead>
                   {headerGroups.map(headerGroup => (
@@ -39,7 +40,9 @@ function Table({ columns, data }) {
                           {headerGroup.headers.map(column => (
                               <th {...column.getHeaderProps(column.getSortByToggleProps())}
                               >
-                                {column.render('Header')}
+                                <span style={{'user-select': 'none'}}>
+                                  {column.render('Header')}
+                                </span>
                                 {/* Add a sort direction indicator */}
                                 <span>
                                   {column.isSorted
@@ -57,13 +60,14 @@ function Table({ columns, data }) {
                   {page.map((row, i) => {
                       prepareRow(row)
                       return (
-                          <TableRow
+                          <tr className="tr"
+                            onClick={() => onClickHandler(row.original)}
                             {...row.getRowProps()} 
                           >
                               {row.cells.map(cell => {
                                   return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                               })}
-                          </TableRow>
+                          </tr>
                       )
                   })}
               </tbody>
@@ -122,23 +126,15 @@ function Table({ columns, data }) {
                   ))}
               </select>
           </ul>
-      </TableWrapper >
+      </div >
   )
 }
 
-const TableBox = ({columns, data}) => {
+const TableBox = ({columns, data, onClickHandler}) => {
     return (
-        <Table columns={columns} data={data} />
+        <Table columns={columns} data={data} onClickHandler={onClickHandler} />
     )
 }
 
 export default TableBox;
 
-const TableWrapper = styled.div`
-    width: 70%;
-    margin: auto
-
-`
-
-const TableRow = styled.tr`
-`
