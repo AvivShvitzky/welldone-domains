@@ -31,6 +31,7 @@ function Navbar() {
   const [currPickedLocation, setCurrPickedLocation] = useRecoilState(currPickedLocationAtom);
   const [currentEntity, setCurrentEntity] = useRecoilState(currentEntityAtom)
   const deleteCategory = useDeleteCategory()
+  
   const dataForNavigation = currentEntity === ENTITY_CATEGORIES ? currPickedCategory : currPickedLocation
 
   const title = TITLE_OPTIONS[currentPage]
