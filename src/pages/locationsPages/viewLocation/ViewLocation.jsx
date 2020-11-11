@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 
 // components
+import GoogleMaps from '../../../components/google-maps/GoogleMaps'
 
 // consts
 import { VIEW_LOCATION } from '../../../consts'
@@ -29,6 +30,10 @@ function ViewCategory(props) {
             <p className="card-text">{location.longitude} {location.latitude}</p>
           </div>
         </div>
+        <GoogleMaps 
+          longitude={location.longitude}
+          latitude={location.latitude}
+        />
       </div>
     </div>
   );
