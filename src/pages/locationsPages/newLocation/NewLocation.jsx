@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import Form from '../../../components/form/form-locations/Form'
 
 // consts
-import { NEW_CATEGORY } from '../../../consts'
+import { NEW_LOCATION } from '../../../consts'
 
 // store
 import { useRecoilState } from "recoil";
@@ -18,7 +18,7 @@ function NewCategory() {
   const addCategory = useAddCategory()
 
   useEffect(() => {
-    setCurrentPage(NEW_CATEGORY)
+    setCurrentPage(NEW_LOCATION)
   }, [])
 
   return (

@@ -4,9 +4,9 @@
 * @param {String} categoryName
 * @returns the index of the found category. If none, it returns -1.
 */
-export function findCategoryIndex(categories, categoryName) {
-  const categoryIndex = categories.findIndex(category => category.name === categoryName);
-  return categoryIndex;
+export function findIndexByName(array, itemName) {
+  const ItemIndex = array.findIndex(item => item.name === itemName);
+  return ItemIndex;
 }
 
 /**
@@ -16,7 +16,12 @@ export function findCategoryIndex(categories, categoryName) {
 * @returns if the category exists on the categories list.
 */
 export function categoryExists(categories, categoryName) {
-  return findCategoryIndex(categories, categoryName) !== -1
+  return findIndexByName(categories, categoryName) !== -1
+}
+
+// TODO
+export function locationExists(locations, locationName) {
+  return findIndexByName(locations, locationName) !== -1
 }
 
 /**

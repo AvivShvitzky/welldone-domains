@@ -4,7 +4,7 @@ export const columns = [
     columns: [
       {
         Header: 'Name',
-        accessor: 'Name',
+        accessor: 'name',
       },
       {
         Header: 'Category',

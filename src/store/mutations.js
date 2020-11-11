@@ -4,13 +4,15 @@ import { useRecoilState } from "recoil";
 
 import { 
   categories as categoriesAtom, 
+  locations as locationsAtom,
   currPickedCategory as currPickedCategoryAtom 
 } 
 from './atoms'
 import { 
-  findCategoryIndex, 
+  findIndexByName, 
   deepCopyArray, 
-  categoryExists 
+  categoryExists,
+  locationExists 
 } from './utils'
 
 export function useAddCategory() {
@@ -41,7 +43,7 @@ export function useEditCategory() {
   
   const memoizedCallback = useCallback(
     (originalCategoryName, updatedCategoryName) => {
-      const categoryIndex = findCategoryIndex(categories, originalCategoryName)
+      const categoryIndex = findIndexByName(categories, originalCategoryName)
       const copiedCategories = deepCopyArray(categories)
       if (categoryIndex === -1) {
         return false
@@ -63,7 +65,7 @@ export function useDeleteCategory() {
   
   const memoizedCallback = useCallback(
     currPickedCategory => {
-      const categoryIndex = findCategoryIndex(categories, currPickedCategory.name)
+      const categoryIndex = findIndexByName(categories, currPickedCategory.name)
       if (categoryIndex !== -1) {
         const copiedCategories = deepCopyArray(categories)
         copiedCategories.splice(categoryIndex, 1) // removes the category from the categories array
@@ -74,6 +76,28 @@ export function useDeleteCategory() {
       return false
     },
     [categories],
+    );
+    
+  return memoizedCallback;
+}
+
+
+export function useAddLocation() {
+  const [locations, setLocations] = useRecoilState(locationsAtom);
+  
+  const memoizedCallback = useCallback(
+    newLocation => {
+      if (!locationExists(locations, newLocation.name)) {
+        const updatedLocations = [
+          ...locations,
+          newLocation
+        ]
+        setLocations(updatedLocations)
+        return true
+      } 
+      return false
+    },
+    [locations, locationExists],
     );
     
   return memoizedCallback;
