@@ -1,8 +1,10 @@
 // libraries and css
 import React, { useState, useEffect } from 'react';
+import '../Form.css'
 
 // components
 import Input from '../../input/Input'
+import Select from '../../select/Select'
 
 // consts
 import { 
@@ -19,7 +21,7 @@ import { NEW_CATEGORY, EDIT_CATEGORY } from '../../../consts'
 
 import useToast from '../../toast/Toast'
 
-function Form({ clickHandler, currentPage, _locationName}) {
+function Form({ clickHandler, currentPage, categories, _locationName}) {
   const [locationName, setLocationName] = useState('')
   const [categoryName, setCategoryName] = useState('')
   const [address, setAddress] = useState('')
@@ -81,11 +83,14 @@ function Form({ clickHandler, currentPage, _locationName}) {
           onChangeHandler={setLocationName}
         />
 
-        <Input 
-          value={categoryName}
-          label="Category Name"
-          onChangeHandler={setCategoryName}
-        />
+        <fieldset>
+        <label>Category Name</label>
+          <Select 
+            data={categories}
+            value={categoryName}
+            onChangeHandler={setCategoryName}
+          />
+        </fieldset>
 
         <Input 
           value={address}

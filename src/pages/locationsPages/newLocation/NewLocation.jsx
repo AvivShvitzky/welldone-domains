@@ -9,12 +9,14 @@ import { NEW_LOCATION } from '../../../consts'
 
 // store
 import { useRecoilState } from "recoil";
-import { currentPage as currentPageAtom } from '../../../store/atoms'
+import { currentPage as currentPageAtom, categories as categoriesAtom } from '../../../store/atoms'
 import { useAddLocation } from '../../../store/mutations'
 
 
 function NewCategory() {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
+  const [categories, setCategories] = useRecoilState(categoriesAtom);
+
   const addLocation = useAddLocation()
 
   useEffect(() => {
@@ -27,6 +29,7 @@ function NewCategory() {
         <Form 
           clickHandler={addLocation}
           currentPage={currentPage}
+          categories={categories}
         />
       </div>
     </div>

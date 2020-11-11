@@ -1,5 +1,6 @@
 // libraries and css
 import React, { useState, useEffect } from 'react';
+import '../Form.css'
 
 // components
 import Input from '../../input/Input'

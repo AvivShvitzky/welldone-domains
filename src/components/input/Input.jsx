@@ -4,7 +4,7 @@ import './Input.css';
 
 const Input = ({ value, label, onChangeHandler }) => {
   return (
-    <fieldset className="heading--primary">
+    <fieldset>
       <label htmlFor="categoryName">{label}</label>
       <input 
         value={value} 
@@ -20,20 +20,3 @@ const Input = ({ value, label, onChangeHandler }) => {
 };
 
 export default Input;
-
-
-
-// const Input = ({ value, label, onChangeHandler }) => {
-//   return (
-//     <fieldset className="heading--primary">
-//       <label htmlFor="categoryName">{label}</label>
-//       <input 
-//         value={value} 
-//         onChange={(e) => setValue(e.target.value)} 
-//         type="text" 
-//         className="form-control input" 
-//         id="categoryName" 
-//         aria-describedby="categoryHelp" 
-//       />
-    
-//     </fieldset>
