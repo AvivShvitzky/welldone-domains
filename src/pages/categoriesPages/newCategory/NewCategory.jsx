@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 
 // components
-import Form from '../../../components/form/Form'
+import Form from '../../../components/form/form-categories/Form'
 
 // consts
 import { NEW_CATEGORY } from '../../../consts'

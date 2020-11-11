@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 
 // components
-import Input from '../input/Input'
+import Input from '../../input/Input'
 
 // consts
 import { 
@@ -14,10 +14,10 @@ import {
   EDIT_CATEGORY_FAIL,
   CREATE_TOAST,
   DELETE_TOAST
-} from '../toast/Toast.consts'
-import { NEW_CATEGORY, EDIT_CATEGORY } from '../../consts'
+} from '../../toast/Toast.consts'
+import { NEW_CATEGORY, EDIT_CATEGORY } from '../../../consts'
 
-import useToast from '../toast/Toast'
+import useToast from '../../toast/Toast'
 
 function Form({ clickHandler, currentPage, categoryName}) {
   const [value, setValue] = useState('')

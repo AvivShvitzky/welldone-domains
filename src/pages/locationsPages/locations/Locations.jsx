@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import Table from '../../../components/table/Table'
 
 // consts
-import { LOCATIONS, LOCATIONS_CHECKED } from '../../../consts'
+import { LOCATIONS, LOCATIONS_CHECKED, ENTITY_LOCATIONS } from '../../../consts'
 import { columns } from '../../../components/table/columns'
 
 // utils
@@ -27,16 +27,9 @@ function Locations(props) {
   const [locations, setLocations] = useRecoilState(locationsAtom);
   const [currPickedListItem, setCurrPickedListItem] = useRecoilState(currPickedListItemAtom);
 
-  const tmp = [{
-    Name: 't',
-    Category: 'c',
-    Coordinates: 'co',
-    Address: 'a'
-  }]
-
   useEffect(() => {
     setCurrentPage(LOCATIONS)
-    setCurrentEntity(LOCATIONS)
+    setCurrentEntity(ENTITY_LOCATIONS)
   }, [])
 
   // allows the parent div to fire a click event seperate from his childs

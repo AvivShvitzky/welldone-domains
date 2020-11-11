@@ -40,7 +40,7 @@ function Table({ columns, data, onClickHandler }) {
                           {headerGroup.headers.map(column => (
                               <th {...column.getHeaderProps(column.getSortByToggleProps())}
                               >
-                                <span style={{'user-select': 'none'}}>
+                                <span style={{userSelect: 'none'}}>
                                   {column.render('Header')}
                                 </span>
                                 {/* Add a sort direction indicator */}

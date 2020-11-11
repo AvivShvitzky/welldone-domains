@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import List from '../../../components/list/List'
 
 // consts
-import { CATEGORIES, CATEGORIES_CHECKED } from '../../../consts'
+import { CATEGORIES, CATEGORIES_CHECKED, ENTITY_CATEGORIES } from '../../../consts'
 
 // utils
 import { allowParentEvent } from '../../../store/utils'
@@ -15,17 +15,20 @@ import { useRecoilState } from "recoil";
 import { 
   categories as categoriesAtom,
   currentPage as currentPageAtom,
-  currPickedCategory as currPickedListItemAtom
+  currPickedCategory as currPickedListItemAtom,
+  currentEntity as currentEntityAtom
 } 
 from '../../../store/atoms'
 
 function Categories(props) {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
+  const [currentEntity, setCurrentEntity] = useRecoilState(currentEntityAtom);
   const [categories, setCategories] = useRecoilState(categoriesAtom);
   const [currPickedListItem, setCurrPickedListItem] = useRecoilState(currPickedListItemAtom);
 
   useEffect(() => {
     setCurrentPage(CATEGORIES)
+    setCurrentEntity(ENTITY_CATEGORIES)
   }, [])
 
   // allows the parent div to fire a click event seperate from his childs

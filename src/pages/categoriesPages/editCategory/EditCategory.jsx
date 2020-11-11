@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 
 // components
-import Form from '../../../components/form/Form'
+import Form from '../../../components/form/form-categories/Form'
 
 // consts
 import { EDIT_CATEGORY } from '../../../consts'

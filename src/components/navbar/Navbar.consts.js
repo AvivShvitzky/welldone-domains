@@ -29,12 +29,12 @@ export const TITLE_OPTIONS = {
 }
 
 export const NAVIGATE_OPTIONS = {
-  CATEGORIES: {
+  ENTITY_CATEGORIES: {
     ICON_NEW: '/new-category', 
     ICON_VIEW: '/category/',
     ICON_EDIT: '/edit-category/',
   },
-  LOCATIONS: {
+  ENTITY_LOCATIONS: {
     ICON_NEW: '/new-location', 
     ICON_VIEW: '/location/',
     ICON_EDIT: '/edit-location/',
