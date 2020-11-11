@@ -23,10 +23,6 @@ function Form({ clickHandler, currentPage, categoryName}) {
   const [value, setValue] = useState('')
   const toast = useToast()
 
-  const setValueHandler = value => {
-    setValue(value)
-  }
-
   // initial
   useEffect(() => {
     if (categoryName) {
@@ -67,7 +63,7 @@ function Form({ clickHandler, currentPage, categoryName}) {
         <Input 
           value={value}
           label="Category Name"
-          onChangeHandler={setValueHandler}
+          onChangeHandler={setValue}
         />
         <small id="categoryHelp" className="form-text text-muted">Enter a name for a category.</small>
       </div>
