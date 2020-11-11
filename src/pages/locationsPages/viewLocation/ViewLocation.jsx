@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 // components
 
 // consts
-import { VIEW_CATEGORY } from '../../../consts'
+import { VIEW_LOCATION } from '../../../consts'
 
 // store
 import { useRecoilState } from "recoil";
@@ -12,12 +12,12 @@ import { currentPage as currentPageAtom } from '../../../store/atoms'
 
 function ViewCategory(props) {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
-  const [category, setCategory] = useState({ name: '' })
+  const [location, setLocation] = useState({})
 
   useEffect(() => {
-    const categoryParam = props.match.params
-    setCategory(categoryParam)
-    setCurrentPage(VIEW_CATEGORY)
+    const locationParam = props.match.params
+    setLocation(locationParam)
+    setCurrentPage(VIEW_LOCATION)
   }, [])
 
   return (
@@ -25,8 +25,8 @@ function ViewCategory(props) {
       <div className="page__content">
         <div className="card" style={{width: '18rem', display: 'inline-block'}}>
           <div className="card-body">
-            <h5 className="card-title">{category.name}</h5>
-            <p className="card-text">This is a mock text for a category.</p>
+            <h5 className="card-title">{location.name}</h5>
+            <p className="card-text">This is a mock text for a location.</p>
           </div>
         </div>
       </div>
