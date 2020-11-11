@@ -5,7 +5,8 @@ import { useRecoilState } from "recoil";
 import { 
   categories as categoriesAtom, 
   locations as locationsAtom,
-  currPickedCategory as currPickedCategoryAtom 
+  currPickedCategory as currPickedCategoryAtom, 
+  currPickedLocation
 } 
 from './atoms'
 import { 
@@ -124,3 +125,23 @@ export function useEditLocation() {
   return memoizedCallback;
 }
 
+export function useDeleteLocation() {
+  const [locations, setLocations] = useRecoilState(locationsAtom);
+  
+  const memoizedCallback = useCallback(
+    currPickedLocation => {
+      const LocationIndex = findIndexByName(locations, currPickedLocation.name)
+      if (LocationIndex !== -1) {
+        const copiedLocations = deepCopyArray(locations)
+        copiedLocations.splice(LocationIndex, 1) // removes the location from the locations array
+        const updatedLocations = copiedLocations
+        setLocations(updatedLocations)
+        return true
+      } 
+      return false
+    },
+    [locations],
+    );
+    
+  return memoizedCallback;
+}
