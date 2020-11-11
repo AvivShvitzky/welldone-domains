@@ -2,30 +2,28 @@
 import React, { useEffect, useState } from 'react';
 
 // components
-import Form from '../../../components/form/form-categories/Form'
+import Form from '../../../components/form/form-locations/Form'
 
 // consts
-import { EDIT_CATEGORY } from '../../../consts'
+import { EDIT_LOCATION } from '../../../consts'
 
 // store
 import { useRecoilState } from "recoil";
-import { currentPage as currentPageAtom } from '../../../store/atoms'
-import { useEditCategory } from '../../../store/mutations'
+import { currentPage as currentPageAtom, currPickedLocation } from '../../../store/atoms'
+import { useEditLocation } from '../../../store/mutations'
 
 
 function EditCategory(props) {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
-  const [category, setCategory] = useState({ name: '' })
-  const editCategory = useEditCategory()
+  const [location, setLocation] = useRecoilState(currPickedLocation);
+  const editLocation = useEditLocation()
 
   useEffect(() => {
-    const categoryParam = props.match.params
-    setCategory(categoryParam)
-    setCurrentPage(EDIT_CATEGORY)
+    setCurrentPage(EDIT_LOCATION)
   }, [])
 
-  const editClickHandler = newCategoryName => {
-    return editCategory(category.name, newCategoryName)
+  const editClickHandler = newLocationName => {
+    return editLocation(location.name, newLocationName)
   }
 
   return (
@@ -33,7 +31,8 @@ function EditCategory(props) {
       <div className="page__content">
         <Form 
           clickHandler={editClickHandler}
-          categoryName={category.name}
+          currentPage={currentPage}
+          LocationName={location.name}
         />
       </div>
     </div>

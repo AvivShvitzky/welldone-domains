@@ -15,14 +15,10 @@ export function findIndexByName(array, itemName) {
 * @param {String} categoryName
 * @returns if the category exists on the categories list.
 */
-export function categoryExists(categories, categoryName) {
-  return findIndexByName(categories, categoryName) !== -1
+export function EntityExists(entityList, EntityName) {
+  return findIndexByName(entityList, EntityName) !== -1
 }
 
-// TODO
-export function locationExists(locations, locationName) {
-  return findIndexByName(locations, locationName) !== -1
-}
 
 /**
 * returns a deep copy of an array.

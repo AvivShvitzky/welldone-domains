@@ -11,8 +11,7 @@ from './atoms'
 import { 
   findIndexByName, 
   deepCopyArray, 
-  categoryExists,
-  locationExists 
+  EntityExists,
 } from './utils'
 
 export function useAddCategory() {
@@ -20,7 +19,7 @@ export function useAddCategory() {
   
   const memoizedCallback = useCallback(
     newCategoryName => {
-      if (!categoryExists(categories, newCategoryName)) {
+      if (!EntityExists(categories, newCategoryName)) {
         const updatedCategories = [
           ...categories,
           {
@@ -32,7 +31,7 @@ export function useAddCategory() {
       } 
       return false
     },
-    [categories, categoryExists],
+    [categories, EntityExists],
     );
     
   return memoizedCallback;
@@ -87,7 +86,7 @@ export function useAddLocation() {
   
   const memoizedCallback = useCallback(
     newLocation => {
-      if (!locationExists(locations, newLocation.name)) {
+      if (!EntityExists(locations, newLocation.name)) {
         const updatedLocations = [
           ...locations,
           newLocation
@@ -97,7 +96,29 @@ export function useAddLocation() {
       } 
       return false
     },
-    [locations, locationExists],
+    [locations, EntityExists],
+    );
+    
+  return memoizedCallback;
+}
+
+export function useEditLocation() {
+  const [locations, setLocations] = useRecoilState(locationsAtom);
+  
+  const memoizedCallback = useCallback(
+    (originalLocationName, updatedLocation) => {
+      const LocationIndex = findIndexByName(locations, originalLocationName)
+      const copiedLocations = deepCopyArray(locations)
+      if (LocationIndex === -1) {
+        return false
+      } 
+      else {
+        copiedLocations[LocationIndex] = updatedLocation
+        setLocations(copiedLocations)
+        return true
+      }
+    },
+    [locations],
     );
     
   return memoizedCallback;
