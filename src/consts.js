@@ -22,8 +22,8 @@ export const VIEW_LOCATION = 'VIEW_LOCATION'
 export const DELETE_LOCATION = 'DELETE_LOCATION'
 
 // entities
-export const ENTITY_CATEGORIES = 'ENTITY_CATEGORIES'
-export const ENTITY_LOCATIONS = 'ENTITY_LOCATIONS'
+export const ENTITY_CATEGORIES = 'CATEGORIES'
+export const ENTITY_LOCATIONS = 'LOCATIONS'
 
 // paths
 export const PATH_CATEGORY = '/categories'

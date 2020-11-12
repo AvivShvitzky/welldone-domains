@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   Route,
   Switch,
@@ -20,8 +19,12 @@ import EditLocation from './pages/locationsPages/editLocation/EditLocation'
 import Navbar from './components/navbar/Navbar'
 import Footer from './components/footer/Footer'
 
-const Router = () => {
+import { useRecoilState } from "recoil";
+import { currentEntity as currentEntityAtom } from './store/atoms'
 
+const Router = () => {
+  const [currentEntity, setCurrentEntity] = useRecoilState(currentEntityAtom);
+  console.log(currentEntity);
   return (
     <BrowserRouter>
       <Navbar />
@@ -32,9 +35,16 @@ const Router = () => {
         <Route exact default path="/categories"
           component={Categories}
         />
-        <Route exact default path="/new-category"
+        <Route exact path="/new-category" render={(props) => (
+          currentEntity ? (
+            <NewCategory {...props} />
+          ) : (
+            <Redirect to="/categories"/>
+          )
+        )}/>
+        {/* <Route exact default path="/new-category"
           component={NewCategory}
-        />
+        /> */}
         <Route path="/category/:name"
           component={ViewCategory}
         />

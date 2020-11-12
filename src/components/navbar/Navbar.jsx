@@ -50,6 +50,7 @@ function Navbar() {
 
   const navigateTo = (iconType, toParam) => {
     if (iconAvailable(iconType)) {
+      console.log(currentEntity);
       let to = NAVIGATE_OPTIONS[currentEntity][iconType]
       if (toParam) {
         to = to + toParam
