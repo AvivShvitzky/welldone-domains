@@ -24,7 +24,6 @@ import { currentEntity as currentEntityAtom } from './store/atoms'
 
 const Router = () => {
   const [currentEntity, setCurrentEntity] = useRecoilState(currentEntityAtom);
-  console.log(currentEntity);
   return (
     <BrowserRouter>
       <Navbar />
@@ -35,16 +34,9 @@ const Router = () => {
         <Route exact default path="/categories"
           component={Categories}
         />
-        <Route exact path="/new-category" render={(props) => (
-          currentEntity ? (
-            <NewCategory {...props} />
-          ) : (
-            <Redirect to="/categories"/>
-          )
-        )}/>
-        {/* <Route exact default path="/new-category"
+        <Route exact default path="/new-category"
           component={NewCategory}
-        /> */}
+        />
         <Route path="/category/:name"
           component={ViewCategory}
         />
