@@ -39,8 +39,7 @@ function Table({ columns, data, onClickHandler }) {
                   {headerGroups.map(headerGroup => (
                       <tr {...headerGroup.getHeaderGroupProps()}>
                           {headerGroup.headers.map(column => (
-                              <th {...column.getHeaderProps(column.getSortByToggleProps())}
-                              >
+                              <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                                 <div>{column.canFilter ? column.render('Filter'): null}</div>
                                 <span style={{userSelect: 'none'}}>
                                   {column.render('Header')}

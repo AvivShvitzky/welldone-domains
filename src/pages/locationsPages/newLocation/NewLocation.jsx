@@ -16,7 +16,6 @@ import { useAddLocation } from '../../../store/mutations'
 function NewCategory() {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
   const [categories, setCategories] = useRecoilState(categoriesAtom);
-
   const addLocation = useAddLocation()
 
   useEffect(() => {

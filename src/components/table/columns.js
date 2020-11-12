@@ -7,7 +7,7 @@ export const columns = [
       {
         Header: 'Name',
         accessor: 'name',
-        Filter: ColumnFilter
+        Filter: ''
       },
       {
         Header: 'Category',
@@ -17,17 +17,17 @@ export const columns = [
       {
         Header: 'Address',
         accessor: 'address',
-        Filter: ColumnFilter
+        Filter: ''
       },
       {
         Header: 'Longitude',
         accessor: 'longitude',
-        Filter: ColumnFilter
+        Filter: ''
       },
       {
         Header: 'Latitude',
         accessor: 'latitude',
-        Filter: ColumnFilter
+        Filter: ''
       },
     ],
   },
