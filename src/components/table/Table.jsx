@@ -1,8 +1,9 @@
 import React from "react";
 import styled from 'styled-components'
-import { useTable, usePagination, useSortBy, useFilters } from 'react-table'
+import { useTable, usePagination, useSortBy, useGlobalFilter } from 'react-table'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Table.css'
+import { GlobalFilter } from "./GlobalFilter";
 
 function Table({ columns, data, onClickHandler }) {
   const {
@@ -19,14 +20,15 @@ function Table({ columns, data, onClickHandler }) {
       nextPage,
       previousPage,
       setPageSize,
-      state: { pageIndex, pageSize },
+      state: { pageIndex, pageSize, globalFilter },
+      setGlobalFilter
   } = useTable(
       {
           columns,
           data,
           initialState: { pageIndex: 0, pageSize: 5 },
       },
-      useFilters,
+      useGlobalFilter,
       useSortBy,
       usePagination,
   )
@@ -34,13 +36,14 @@ function Table({ columns, data, onClickHandler }) {
   // Render the UI for your table
   return (
       <div>
+          <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
           <table className="table" {...getTableProps()}>
               <thead>
                   {headerGroups.map(headerGroup => (
                       <tr {...headerGroup.getHeaderGroupProps()}>
                           {headerGroup.headers.map(column => (
-                              <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                                <div>{column.canFilter ? column.render('Filter'): null}</div>
+                              <th {...column.getHeaderProps(column.getSortByToggleProps())}
+                              >
                                 <span style={{userSelect: 'none'}}>
                                   {column.render('Header')}
                                 </span>
@@ -128,19 +131,6 @@ function Table({ columns, data, onClickHandler }) {
               </select>
           </ul>
       </div >
-  )
-}
-
-export function ColumnFilter({ column }) {
-  const { filterValue, setFilter } = column
-  return (
-    <span>
-      Search:{' '}
-      <input 
-        value={filterValue || ''}
-        onChange={e => setFilter(e.target.value)}
-      />
-    </span>
   )
 }
 
