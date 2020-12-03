@@ -76,13 +76,14 @@ function AddItem(data, setData) {
 export function EditItem(data, setData) {
   const memoizedCallback = useCallback(
     (originalItem, updatedItem) => {
+      console.log(updatedItem);
       const ItemIndex = findIndexByName(data, originalItem)
       const copiedData = deepCopyArray(data)
       if (ItemIndex === -1) {
         return false
       } 
       else {
-        if (typeof newItem === 'string') {
+        if (typeof updatedItem === 'string') {
           copiedData[ItemIndex].name = updatedItem
         } 
         else {
