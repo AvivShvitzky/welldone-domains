@@ -12,7 +12,7 @@ import { columns } from '../../../components/table/columns'
 import { isParentEvent } from '../../../utils'
 
 // store
-import { useRecoilState } from "recoil"; 
+import { useRecoilValue, useSetRecoilState } from "recoil"; 
 import { 
   locations as locationsAtom,
   currentPage as currentPageAtom,
@@ -22,10 +22,10 @@ import {
 from '../../../store/atoms'
 
 function Locations(props) {
-  const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
-  const [currentEntity, setCurrentEntity] = useRecoilState(currentEntityAtom);
-  const [locations, setLocations] = useRecoilState(locationsAtom);
-  const [currPickedListItem, setCurrPickedListItem] = useRecoilState(currPickedListItemAtom);
+  const setCurrentPage = useSetRecoilState(currentPageAtom)
+  const setCurrentEntity = useSetRecoilState(currentEntityAtom)
+  const setCurrPickedListItem = useSetRecoilState(currPickedListItemAtom)
+  const locations = useRecoilValue(locationsAtom);
 
   useEffect(() => {
     setCurrentPage(LOCATIONS)
@@ -33,13 +33,13 @@ function Locations(props) {
   }, [locations])
 
   // allows the parent div to fire a click event seperate from his childs
-  const clickHandler = event => {
+  const onParentClick = event => {
     if (isParentEvent(event)) {
       setCurrentPage(LOCATIONS)
     }
   }
 
-  const listItemClickHandler = (listItem) => {
+  const onListItemClick = (listItem) => {
     setCurrentPage(LOCATIONS_CHECKED)
     setCurrPickedListItem(listItem)
   }
@@ -47,13 +47,13 @@ function Locations(props) {
   return (
     <div 
       className="page"
-      onClick={event => clickHandler(event)}
+      onClick={event => onParentClick(event)}
     >
       <div className="page__content">
         <Table
           columns={columns}
           data={locations}
-          onClickHandler={listItemClickHandler}
+          onClickHandler={onListItemClick}
         />
       </div>
     </div>

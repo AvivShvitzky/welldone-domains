@@ -1,19 +1,20 @@
+// libraries
 import React, { useState, useCallback } from 'react';
-
 import { useRecoilState } from "recoil";
 
+// atoms
 import { 
   categories as categoriesAtom, 
   locations as locationsAtom,
-  currPickedCategory as currPickedCategoryAtom, 
-  currPickedLocation
 } 
 from './atoms'
+
+// utils
 import { 
-  findIndexByName, 
-  deepCopyArray, 
+  findIndexByName,  
   EntityExists,
 } from './utils'
+import { deepCopyArray } from '../utils'
 
 export function useAddCategory() {
   const [categories, setCategories] = useRecoilState(categoriesAtom);

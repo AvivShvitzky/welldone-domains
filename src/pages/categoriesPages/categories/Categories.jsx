@@ -11,7 +11,7 @@ import { CATEGORIES, CATEGORIES_CHECKED, ENTITY_CATEGORIES } from '../../../cons
 import { isParentEvent } from '../../../utils'
 
 // store
-import { useRecoilState } from "recoil"; 
+import { useRecoilValue, useSetRecoilState } from "recoil"; 
 import { 
   categories as categoriesAtom,
   currentPage as currentPageAtom,
@@ -21,10 +21,10 @@ import {
 from '../../../store/atoms'
 
 function Categories(props) {
-  const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
-  const [currentEntity, setCurrentEntity] = useRecoilState(currentEntityAtom);
-  const [categories, setCategories] = useRecoilState(categoriesAtom);
-  const [currPickedListItem, setCurrPickedListItem] = useRecoilState(currPickedListItemAtom);
+  const setCurrentPage = useSetRecoilState(currentPageAtom)
+  const setCurrentEntity = useSetRecoilState(currentEntityAtom)
+  const setCurrPickedListItem = useSetRecoilState(currPickedListItemAtom)
+  const categories = useRecoilValue(categoriesAtom);
 
   useEffect(() => {
     setCurrentPage(CATEGORIES)
@@ -32,13 +32,13 @@ function Categories(props) {
   }, [])
 
   // allows the parent div to fire a click event seperate from his childs
-  const clickHandler = event => {
+  const onParentClick = event => {
     if (isParentEvent(event)) {
       setCurrentPage(CATEGORIES)
     }
   }
 
-  const listItemClickHandler = (listItem) => {
+  const onListItemClick = (listItem) => {
     setCurrentPage(CATEGORIES_CHECKED)
     setCurrPickedListItem(listItem)
   }
@@ -46,12 +46,12 @@ function Categories(props) {
   return (
     <div 
       className="page"
-      onClick={event => clickHandler(event)}
+      onClick={event => onParentClick(event)}
     >
       <div className="page__content">
         <List
           data={categories}
-          onClickHandler={listItemClickHandler}
+          onClickHandler={onListItemClick}
         />
       </div>
     </div>

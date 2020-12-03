@@ -12,3 +12,14 @@ export function isParentEvent(event) {
   }
   return false
 }
+
+
+/**
+* returns a deep copy of an array.
+* @param {Array} array
+* @returns a deep copy of an array.
+*/
+export function deepCopyArray(array) {
+  const copiedArray = JSON.parse(JSON.stringify(array))
+  return copiedArray;
+}
