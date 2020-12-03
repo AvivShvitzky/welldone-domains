@@ -19,25 +19,7 @@ import { deepCopyArray } from '../utils'
 
 export function useAddCategory() {
   const [categories, setCategories] = useRecoilState(categoriesAtom);
-  
-  const memoizedCallback = useCallback(
-    newCategoryName => {
-      if (!entityExists(categories, newCategoryName)) {
-        const updatedCategories = [
-          ...categories,
-          {
-            name: newCategoryName
-          },
-        ]
-        setCategories(updatedCategories)
-        return true
-      } 
-      return false
-    },
-    [categories, entityExists],
-    );
-    
-  return memoizedCallback;
+  return AddItem(categories, setCategories)
 }
 
 export function useEditCategory() {
@@ -64,28 +46,12 @@ export function useEditCategory() {
 
 export function useDeleteCategory() {
   const [categories, setCategories] = useRecoilState(categoriesAtom);
-  return DeleteEntity(categories, setCategories)
+  return DeleteItem(categories, setCategories)
 }
 
 export function useAddLocation() {
   const [locations, setLocations] = useRecoilState(locationsAtom);
-  
-  const memoizedCallback = useCallback(
-    newLocation => {
-      if (!entityExists(locations, newLocation.name)) {
-        const updatedLocations = [
-          ...locations,
-          newLocation
-        ]
-        setLocations(updatedLocations)
-        return true
-      } 
-      return false
-    },
-    [locations, entityExists],
-    );
-    
-  return memoizedCallback;
+  return AddItem(locations, setLocations)
 }
 
 export function useEditLocation() {
@@ -112,10 +78,32 @@ export function useEditLocation() {
 
 export function useDeleteLocation() {
   const [locations, setLocations] = useRecoilState(locationsAtom);
-  return DeleteEntity(locations, setLocations)
+  return DeleteItem(locations, setLocations)
 }
 
-function DeleteEntity(data, setData) {
+function AddItem(data, setData) {
+  const memoizedCallback = useCallback(
+    newItem => {
+      if (!entityExists(data, newItem)) {
+        if (typeof newItem === 'string') {
+          newItem = { name: newItem }
+        }
+        const updatedData = [
+          ...data,
+          newItem
+        ]
+        setData(updatedData)
+        return true
+      } 
+      return false
+    },
+    [data, entityExists],
+    );
+    
+  return memoizedCallback;
+}
+
+function DeleteItem(data, setData) {
   const memoizedCallback = useCallback(
     currPickedEntity => {
       const itemIndex = findIndexByName(data, currPickedEntity.name)

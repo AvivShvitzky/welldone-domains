@@ -23,7 +23,7 @@ import useToast from '../../toast/Toast'
 
 function Form({ clickHandler, currentPage, categories, location }) {
   const [locationName, setLocationName] = useState('')
-  const [categoryName, setCategoryName] = useState('')
+  const [categoryName, setCategoryName] = useState('playgrounds')
   const [address, setAddress] = useState('')
   const [longitude, setLongitude] = useState('')
   const [latitude, setLatitude] = useState('')
