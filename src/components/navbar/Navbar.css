@@ -33,7 +33,7 @@
 }
 
 .icon__box--available:hover {
-  color: #1986fa;
+  color: #4ea1fa;
   transition: color 0.5s;
   text-decoration: none;
 }
