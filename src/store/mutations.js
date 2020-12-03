@@ -3,13 +3,7 @@ import React, { useState, useCallback } from 'react';
 import { useRecoilState } from "recoil";
 
 // consts
-import { 
-  ENTITY_CATEGORIES, 
-  ENTITY_LOCATIONS,
-  NEW_CATEGORY,
-  EDIT_CATEGORY,
-  DELETE_CATEGORY
-} from '../consts'
+import { ENTITY_CATEGORIES, ENTITY_LOCATIONS} from '../consts'
 
 // atoms
 import { 
@@ -25,33 +19,6 @@ import {
 } from './utils'
 // utils
 import { deepCopyArray } from '../utils'
-
-export function mutateItems(entity, actionType) {
-  const [categories, setCategories] = useRecoilState(categoriesAtom);
-  const [locations, setLocations] = useRecoilState(locationsAtom);
-  const hookToBeUsed = () => {
-    if (entity === ENTITY_CATEGORIES ) {
-      return [categories, setCategories]
-    } else {
-      return [locations, setLocations]
-    }
-  }
-
-  switch (actionType) {
-    case NEW_CATEGORY:
-      AddItem(...hookToBeUsed)
-      break;
-    case EDIT_CATEGORY:
-    
-    break;
-    case DELETE_CATEGORY:
-    
-    break;
-  
-    default:
-      break;
-  }
-}
 
 export function useAddItem(entity) {
   const [categories, setCategories] = useRecoilState(categoriesAtom);
