@@ -16,7 +16,7 @@ import {
 import { ICONS_AVAILABILITY, TITLE_OPTIONS, NAVIGATE_OPTIONS } from './Navbar.consts'
 
 // store
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { 
   currentPage as currentPageAtom,
   currPickedCategory as currPickedCategoryAtom,
@@ -27,10 +27,10 @@ import { useDeleteItem } from '../../store/mutations'
 
 function Navbar() {
   // state
-  const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
-  const [currPickedCategory, setCurrPickedCategoryAtom] = useRecoilState(currPickedCategoryAtom);
-  const [currPickedLocation, setCurrPickedLocation] = useRecoilState(currPickedLocationAtom);
-  const [currentEntity, setCurrentEntity] = useRecoilState(currentEntityAtom)
+  const currentPage = useRecoilValue(currentPageAtom);
+  const currPickedCategory = useRecoilValue(currPickedCategoryAtom);
+  const currPickedLocation = useRecoilValue(currPickedLocationAtom);
+  const currentEntity = useRecoilValue(currentEntityAtom)
   const deleteItem = useDeleteItem(currentEntity)
 
   // consts
