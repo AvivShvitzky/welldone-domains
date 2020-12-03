@@ -8,14 +8,14 @@ import Form from '../../../components/form/form-categories/Form'
 import { EDIT_CATEGORY } from '../../../consts'
 
 // store
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { currentPage as currentPageAtom } from '../../../store/atoms'
 import { useEditCategory } from '../../../store/mutations'
 
 
 function EditCategory(props) {
-  const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
   const [category, setCategory] = useState({ name: '' })
+  const setCurrentPage = useSetRecoilState(currentPageAtom);
   const editCategory = useEditCategory()
 
   useEffect(() => {

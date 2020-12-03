@@ -8,7 +8,7 @@ import Form from '../../../components/form/form-locations/Form'
 import { EDIT_LOCATION } from '../../../consts'
 
 // store
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { 
   currentPage as currentPageAtom, 
   categories as categoriesAtom, 
@@ -17,10 +17,10 @@ import {
 import { useEditLocation } from '../../../store/mutations'
 
 
-function EditCategory(props) {
+function EditCategory() {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
-  const [location, setLocation] = useRecoilState(currPickedLocation);
-  const [categories, setCategories] = useRecoilState(categoriesAtom);
+  const location = useRecoilValue(currPickedLocation);
+  const categories = useRecoilValue(categoriesAtom);
   const editLocation = useEditLocation()
 
   useEffect(() => {

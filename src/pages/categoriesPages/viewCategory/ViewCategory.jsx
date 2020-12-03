@@ -7,11 +7,11 @@ import React, { useEffect, useState } from 'react';
 import { VIEW_CATEGORY } from '../../../consts'
 
 // store
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { currentPage as currentPageAtom } from '../../../store/atoms'
 
 function ViewCategory(props) {
-  const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
+  const setCurrentPage = useSetRecoilState(currentPageAtom);
   const [category, setCategory] = useState({ name: '' })
 
   useEffect(() => {

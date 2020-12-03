@@ -8,12 +8,12 @@ import GoogleMaps from '../../../components/google-maps/GoogleMaps'
 import { VIEW_LOCATION } from '../../../consts'
 
 // store
-import { useRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
   import { currentPage as currentPageAtom, currPickedLocation } from '../../../store/atoms'
 
-function ViewCategory(props) {
-  const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
-  const [location, setLocation] = useRecoilState(currPickedLocation);
+function ViewCategory() {
+  const setCurrentPage = useSetRecoilState(currentPageAtom);
+  const location = useRecoilValue(currPickedLocation);
 
   useEffect(() => {
     setCurrentPage(VIEW_LOCATION)

@@ -8,15 +8,15 @@ import Form from '../../../components/form/form-locations/Form'
 import { NEW_LOCATION } from '../../../consts'
 
 // store
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { currentPage as currentPageAtom, categories as categoriesAtom } from '../../../store/atoms'
 import { useAddLocation } from '../../../store/mutations'
 
 
 function NewCategory() {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
-  const [categories, setCategories] = useRecoilState(categoriesAtom);
-  const addLocation = useAddLocation()
+  const categories = useRecoilValue(categoriesAtom);
+  const addLocation = useAddLocation();
 
   useEffect(() => {
     setCurrentPage(NEW_LOCATION)
