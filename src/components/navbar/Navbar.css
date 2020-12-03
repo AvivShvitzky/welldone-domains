@@ -30,7 +30,7 @@
 .icon__box--available {
   color: #007bff;
   cursor: pointer;
-  opacity: 100%;
+  opacity: 100%!important;
 }
 
 .icon__box--available:hover {
