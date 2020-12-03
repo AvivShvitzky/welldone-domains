@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import Form from '../../../components/form/form-locations/Form'
 
 // consts
-import { EDIT_LOCATION } from '../../../consts'
+import { EDIT_LOCATION, ENTITY_LOCATIONS } from '../../../consts'
 
 // store
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -14,14 +14,14 @@ import {
   categories as categoriesAtom, 
   currPickedLocation 
 } from '../../../store/atoms'
-import { useEditLocation } from '../../../store/mutations'
+import { useEditItem } from '../../../store/mutations'
 
 
 function EditCategory() {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
   const location = useRecoilValue(currPickedLocation);
   const categories = useRecoilValue(categoriesAtom);
-  const editLocation = useEditLocation()
+  const editLocation = useEditItem(ENTITY_LOCATIONS)
 
   useEffect(() => {
     setCurrentPage(EDIT_LOCATION)

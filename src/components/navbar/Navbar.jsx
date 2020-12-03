@@ -23,7 +23,7 @@ import {
   currPickedLocation as currPickedLocationAtom,
   currentEntity as currentEntityAtom
 } from "../../store/atoms";
-import { useDeleteCategory, useDeleteLocation } from '../../store/mutations'
+import { useDeleteItem } from '../../store/mutations'
 
 function Navbar() {
   // state
@@ -31,17 +31,10 @@ function Navbar() {
   const [currPickedCategory, setCurrPickedCategoryAtom] = useRecoilState(currPickedCategoryAtom);
   const [currPickedLocation, setCurrPickedLocation] = useRecoilState(currPickedLocationAtom);
   const [currentEntity, setCurrentEntity] = useRecoilState(currentEntityAtom)
-  // delete mutations
-  const deleteCategory = useDeleteCategory()
-  const deleteLocation = useDeleteLocation()
-  const deleteEntity = () => {
-    if (currentEntity === ENTITY_CATEGORIES) {
-      deleteCategory(currPickedCategory)
-    }  else {
-      deleteLocation(currPickedLocation)
-    } 
-  }
+  const deleteItem = useDeleteItem(currentEntity)
+
   // consts
+  const entityToDelete = currentEntity === ENTITY_CATEGORIES ? currPickedCategory : currPickedLocation
   const dataForNavigation = currentEntity === ENTITY_CATEGORIES ? currPickedCategory : currPickedLocation
   const title = TITLE_OPTIONS[currentPage]
   const iconAvailable = iconType => {
@@ -112,7 +105,7 @@ function Navbar() {
         </Link>
         <div 
           className={`icon__box ${iconAvailable(ICON_DELETE) ? 'icon__box--available' : 'icon__box--unavailable'}`}
-          onClick={() => deleteEntity()}  
+          onClick={() => deleteItem(entityToDelete)}  
         >
           <FontAwesomeIcon 
             icon={faTrashAlt} 

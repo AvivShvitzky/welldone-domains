@@ -25,29 +25,29 @@ export function useAddItem(entity) {
   const [locations, setLocations] = useRecoilState(locationsAtom);
   if (entity === ENTITY_CATEGORIES) {
     return AddItem(categories, setCategories)
-  } else {
-    return AddItem(locations, setLocations)
-  }  
+  } 
+  return AddItem(locations, setLocations)
 }
 
-export function useEditCategory() {
+export function useEditItem(entity) {
   const [categories, setCategories] = useRecoilState(categoriesAtom);
-  return EditItem(categories, setCategories)
-}
-
-export function useDeleteCategory() {
-  const [categories, setCategories] = useRecoilState(categoriesAtom);
-  return DeleteItem(categories, setCategories)
-}
-
-export function useEditLocation() {
   const [locations, setLocations] = useRecoilState(locationsAtom);
+  if (entity === ENTITY_CATEGORIES) {
+    return EditItem(categories, setCategories)
+  }
   return EditItem(locations, setLocations)
 }
 
-export function useDeleteLocation() {
+export function useDeleteItem(entity) {
+  const [categories, setCategories] = useRecoilState(categoriesAtom);
   const [locations, setLocations] = useRecoilState(locationsAtom);
+  if (entity === ENTITY_CATEGORIES) {
+    return DeleteItem(categories, setCategories)
+  }
   return DeleteItem(locations, setLocations)
+}
+
+export function useDeleteLocation() {
 }
 
 function AddItem(data, setData) {
