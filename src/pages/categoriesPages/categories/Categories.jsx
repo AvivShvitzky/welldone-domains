@@ -8,7 +8,7 @@ import List from '../../../components/list/List'
 import { CATEGORIES, CATEGORIES_CHECKED, ENTITY_CATEGORIES } from '../../../consts'
 
 // utils
-import { allowParentEvent } from '../../../store/utils'
+import { isParentEvent } from '../../../utils'
 
 // store
 import { useRecoilState } from "recoil"; 
@@ -33,7 +33,9 @@ function Categories(props) {
 
   // allows the parent div to fire a click event seperate from his childs
   const clickHandler = event => {
-    allowParentEvent(event, CATEGORIES, setCurrentPage)
+    if (isParentEvent(event)) {
+      setCurrentPage(CATEGORIES)
+    }
   }
 
   const listItemClickHandler = (listItem) => {

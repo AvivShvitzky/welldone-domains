@@ -9,7 +9,7 @@ import { LOCATIONS, LOCATIONS_CHECKED, ENTITY_LOCATIONS } from '../../../consts'
 import { columns } from '../../../components/table/columns'
 
 // utils
-import { allowParentEvent } from '../../../store/utils'
+import { isParentEvent } from '../../../utils'
 
 // store
 import { useRecoilState } from "recoil"; 
@@ -34,7 +34,9 @@ function Locations(props) {
 
   // allows the parent div to fire a click event seperate from his childs
   const clickHandler = event => {
-    allowParentEvent(event, LOCATIONS, setCurrentPage)
+    if (isParentEvent(event)) {
+      setCurrentPage(LOCATIONS)
+    }
   }
 
   const listItemClickHandler = (listItem) => {

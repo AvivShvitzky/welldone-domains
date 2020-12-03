@@ -29,18 +29,3 @@ export function deepCopyArray(array) {
   const copiedArray = JSON.parse(JSON.stringify(array))
   return copiedArray;
 }
-
-
-/**
-* allows the parent div to fire a click event seperate from his childs.
-* @param {Event} event
-* @param {String} pageName
-* @returns a deep copy of an array.
-*/
-// 
-export function allowParentEvent(event, pageName, cb) {
-  event.preventDefault();
-  if (event.target === event.currentTarget) {
-    cb(pageName)
-  }
-}
