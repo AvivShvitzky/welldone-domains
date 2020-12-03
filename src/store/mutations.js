@@ -2,6 +2,9 @@
 import React, { useState, useCallback } from 'react';
 import { useRecoilState } from "recoil";
 
+// consts
+import { ENTITY_CATEGORIES, ENTITY_LOCATIONS} from '../consts'
+
 // atoms
 import { 
   categories as categoriesAtom, 
@@ -17,9 +20,14 @@ import {
 // utils
 import { deepCopyArray } from '../utils'
 
-export function useAddCategory() {
+export function useAddItem(entity) {
   const [categories, setCategories] = useRecoilState(categoriesAtom);
-  return AddItem(categories, setCategories)
+  const [locations, setLocations] = useRecoilState(locationsAtom);
+  if (entity === ENTITY_CATEGORIES) {
+    return AddItem(categories, setCategories)
+  } else {
+    return AddItem(locations, setLocations)
+  }  
 }
 
 export function useEditCategory() {
@@ -30,11 +38,6 @@ export function useEditCategory() {
 export function useDeleteCategory() {
   const [categories, setCategories] = useRecoilState(categoriesAtom);
   return DeleteItem(categories, setCategories)
-}
-
-export function useAddLocation() {
-  const [locations, setLocations] = useRecoilState(locationsAtom);
-  return AddItem(locations, setLocations)
 }
 
 export function useEditLocation() {

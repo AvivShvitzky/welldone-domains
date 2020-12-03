@@ -5,17 +5,17 @@ import React, { useEffect } from 'react';
 import Form from '../../../components/form/form-categories/Form'
 
 // consts
-import { NEW_CATEGORY } from '../../../consts'
+import { NEW_CATEGORY, ENTITY_CATEGORIES } from '../../../consts'
 
 // store
 import { useRecoilState } from "recoil";
 import { currentPage as currentPageAtom } from '../../../store/atoms'
-import { useAddCategory } from '../../../store/mutations'
+import { useAddItem } from '../../../store/mutations'
 
 
 function NewCategory() {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
-  const addCategory = useAddCategory()
+  const addCategory = useAddItem(ENTITY_CATEGORIES)
 
   useEffect(() => {
     setCurrentPage(NEW_CATEGORY)
