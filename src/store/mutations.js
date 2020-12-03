@@ -24,24 +24,7 @@ export function useAddCategory() {
 
 export function useEditCategory() {
   const [categories, setCategories] = useRecoilState(categoriesAtom);
-  
-  const memoizedCallback = useCallback(
-    (originalCategoryName, updatedCategoryName) => {
-      const categoryIndex = findIndexByName(categories, originalCategoryName)
-      const copiedCategories = deepCopyArray(categories)
-      if (categoryIndex === -1) {
-        return false
-      } 
-      else {
-        copiedCategories[categoryIndex].name = updatedCategoryName
-        setCategories(copiedCategories)
-        return true
-      }
-    },
-    [categories],
-    );
-    
-  return memoizedCallback;
+  return EditItem(categories, setCategories)
 }
 
 export function useDeleteCategory() {
@@ -56,24 +39,7 @@ export function useAddLocation() {
 
 export function useEditLocation() {
   const [locations, setLocations] = useRecoilState(locationsAtom);
-  
-  const memoizedCallback = useCallback(
-    (originalLocationName, updatedLocation) => {
-      const LocationIndex = findIndexByName(locations, originalLocationName)
-      const copiedLocations = deepCopyArray(locations)
-      if (LocationIndex === -1) {
-        return false
-      } 
-      else {
-        copiedLocations[LocationIndex] = updatedLocation
-        setLocations(copiedLocations)
-        return true
-      }
-    },
-    [locations],
-    );
-    
-  return memoizedCallback;
+  return EditItem(locations, setLocations)
 }
 
 export function useDeleteLocation() {
@@ -85,6 +51,7 @@ function AddItem(data, setData) {
   const memoizedCallback = useCallback(
     newItem => {
       if (!entityExists(data, newItem)) {
+        // if the hook is being called by category entity
         if (typeof newItem === 'string') {
           newItem = { name: newItem }
         }
@@ -98,6 +65,31 @@ function AddItem(data, setData) {
       return false
     },
     [data, entityExists],
+    );
+    
+  return memoizedCallback;
+}
+
+export function EditItem(data, setData) {
+  const memoizedCallback = useCallback(
+    (originalItem, updatedItem) => {
+      const ItemIndex = findIndexByName(data, originalItem)
+      const copiedData = deepCopyArray(data)
+      if (ItemIndex === -1) {
+        return false
+      } 
+      else {
+        if (typeof newItem === 'string') {
+          copiedData[ItemIndex].name = updatedItem
+        } 
+        else {
+          copiedData[ItemIndex] = updatedItem
+        }
+        setData(copiedData)
+        return true
+      }
+    },
+    [data],
     );
     
   return memoizedCallback;
