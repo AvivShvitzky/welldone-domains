@@ -105,8 +105,7 @@ function DeleteItem(data, setData) {
       if (itemIndex !== -1) {
         const copiedData = deepCopyArray(data)
         copiedData.splice(itemIndex, 1) // removes the location from the data array
-        const updatedData = copiedData
-        setData(updatedData)
+        setData(copiedData)
         return true
       } 
       return false
