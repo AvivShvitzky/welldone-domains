@@ -15,6 +15,6 @@ export function findIndexByName(array, itemName) {
 * @param {String} categoryName
 * @returns if the category exists on the categories list.
 */
-export function EntityExists(entityList, EntityName) {
+export function entityExists(entityList, EntityName) {
   return findIndexByName(entityList, EntityName) !== -1
 }

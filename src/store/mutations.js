@@ -9,11 +9,12 @@ import {
 } 
 from './atoms'
 
-// utils
+// utils store
 import { 
   findIndexByName,  
-  EntityExists,
+  entityExists,
 } from './utils'
+// utils
 import { deepCopyArray } from '../utils'
 
 export function useAddCategory() {
@@ -21,7 +22,7 @@ export function useAddCategory() {
   
   const memoizedCallback = useCallback(
     newCategoryName => {
-      if (!EntityExists(categories, newCategoryName)) {
+      if (!entityExists(categories, newCategoryName)) {
         const updatedCategories = [
           ...categories,
           {
@@ -33,7 +34,7 @@ export function useAddCategory() {
       } 
       return false
     },
-    [categories, EntityExists],
+    [categories, entityExists],
     );
     
   return memoizedCallback;
@@ -63,32 +64,15 @@ export function useEditCategory() {
 
 export function useDeleteCategory() {
   const [categories, setCategories] = useRecoilState(categoriesAtom);
-  
-  const memoizedCallback = useCallback(
-    currPickedCategory => {
-      const categoryIndex = findIndexByName(categories, currPickedCategory.name)
-      if (categoryIndex !== -1) {
-        const copiedCategories = deepCopyArray(categories)
-        copiedCategories.splice(categoryIndex, 1) // removes the category from the categories array
-        const updatedCategories = copiedCategories
-        setCategories(updatedCategories)
-        return true
-      } 
-      return false
-    },
-    [categories],
-    );
-    
-  return memoizedCallback;
+  return DeleteEntity(categories, setCategories)
 }
-
 
 export function useAddLocation() {
   const [locations, setLocations] = useRecoilState(locationsAtom);
   
   const memoizedCallback = useCallback(
     newLocation => {
-      if (!EntityExists(locations, newLocation.name)) {
+      if (!entityExists(locations, newLocation.name)) {
         const updatedLocations = [
           ...locations,
           newLocation
@@ -98,7 +82,7 @@ export function useAddLocation() {
       } 
       return false
     },
-    [locations, EntityExists],
+    [locations, entityExists],
     );
     
   return memoizedCallback;
@@ -128,20 +112,23 @@ export function useEditLocation() {
 
 export function useDeleteLocation() {
   const [locations, setLocations] = useRecoilState(locationsAtom);
-  
+  return DeleteEntity(locations, setLocations)
+}
+
+function DeleteEntity(data, setData) {
   const memoizedCallback = useCallback(
-    currPickedLocation => {
-      const LocationIndex = findIndexByName(locations, currPickedLocation.name)
-      if (LocationIndex !== -1) {
-        const copiedLocations = deepCopyArray(locations)
-        copiedLocations.splice(LocationIndex, 1) // removes the location from the locations array
-        const updatedLocations = copiedLocations
-        setLocations(updatedLocations)
+    currPickedEntity => {
+      const itemIndex = findIndexByName(data, currPickedEntity.name)
+      if (itemIndex !== -1) {
+        const copiedData = deepCopyArray(data)
+        copiedData.splice(itemIndex, 1) // removes the location from the data array
+        const updatedData = copiedData
+        setData(updatedData)
         return true
       } 
       return false
     },
-    [locations],
+    [data],
     );
     
   return memoizedCallback;
