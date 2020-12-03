@@ -1,9 +1,9 @@
 // libraries
-import React, { useState, useCallback } from 'react';
+import { useCallback } from 'react';
 import { useRecoilState } from "recoil";
 
 // consts
-import { ENTITY_CATEGORIES, ENTITY_LOCATIONS} from '../consts'
+import { ENTITY_CATEGORIES } from '../consts'
 
 // atoms
 import { 

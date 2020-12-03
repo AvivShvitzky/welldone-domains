@@ -22,10 +22,10 @@ import {
 from '../../../store/atoms'
 
 function Locations(props) {
+  const locations = useRecoilValue(locationsAtom);
   const setCurrentPage = useSetRecoilState(currentPageAtom)
   const setCurrentEntity = useSetRecoilState(currentEntityAtom)
   const setCurrPickedListItem = useSetRecoilState(currPickedListItemAtom)
-  const locations = useRecoilValue(locationsAtom);
 
   useEffect(() => {
     setCurrentPage(LOCATIONS)

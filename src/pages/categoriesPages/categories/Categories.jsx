@@ -21,10 +21,10 @@ import {
 from '../../../store/atoms'
 
 function Categories(props) {
+  const categories = useRecoilValue(categoriesAtom);
   const setCurrentPage = useSetRecoilState(currentPageAtom)
   const setCurrentEntity = useSetRecoilState(currentEntityAtom)
   const setCurrPickedListItem = useSetRecoilState(currPickedListItemAtom)
-  const categories = useRecoilValue(categoriesAtom);
 
   useEffect(() => {
     setCurrentPage(CATEGORIES)
