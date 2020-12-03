@@ -34,8 +34,7 @@ function Navbar() {
   const deleteItem = useDeleteItem(currentEntity)
 
   // consts
-  const entityToDelete = currentEntity === ENTITY_CATEGORIES ? currPickedCategory : currPickedLocation
-  const dataForNavigation = currentEntity === ENTITY_CATEGORIES ? currPickedCategory : currPickedLocation
+  const currentItem = currentEntity === ENTITY_CATEGORIES ? currPickedCategory : currPickedLocation
   const title = TITLE_OPTIONS[currentPage]
   const iconAvailable = iconType => {
     return ICONS_AVAILABILITY[currentPage].includes(iconType)
@@ -81,8 +80,8 @@ function Navbar() {
         </Link>
         <Link 
           to={{
-            pathname: navigateTo(ICON_VIEW, dataForNavigation.name),
-            state: { dataForNavigation }
+            pathname: navigateTo(ICON_VIEW, currentItem.name),
+            state: { currentItem }
           }} 
           className={`icon__box ${iconAvailable(ICON_VIEW) ? 'icon__box--available' : 'icon__box--unavailable'}`}
         >
@@ -93,8 +92,8 @@ function Navbar() {
         </Link>
         <Link 
           to={{
-            pathname: navigateTo(ICON_EDIT, dataForNavigation.name),
-            state: { dataForNavigation }
+            pathname: navigateTo(ICON_EDIT, currentItem.name),
+            state: { currentItem }
           }} 
           className={`icon__box ${iconAvailable(ICON_EDIT) ? 'icon__box--available' : 'icon__box--unavailable'}`}
         >
@@ -105,7 +104,7 @@ function Navbar() {
         </Link>
         <div 
           className={`icon__box ${iconAvailable(ICON_DELETE) ? 'icon__box--available' : 'icon__box--unavailable'}`}
-          onClick={() => deleteItem(entityToDelete)}  
+          onClick={() => deleteItem(currentItem)}  
         >
           <FontAwesomeIcon 
             icon={faTrashAlt} 
