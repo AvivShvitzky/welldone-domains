@@ -30,14 +30,12 @@
 .icon__box--available {
   color: #007bff;
   cursor: pointer;
-  opacity: 100%!important;
 }
 
 .icon__box--available:hover {
-  opacity: 80%;
-  transition: opacity 0.5s;
+  color: #1986fa;
+  transition: color 0.5s;
   text-decoration: none;
-  color: #007bff;
 }
 
 .icon__box--unavailable, .icon__box--unavailable:hover {
