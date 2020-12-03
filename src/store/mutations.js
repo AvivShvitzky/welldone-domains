@@ -47,9 +47,6 @@ export function useDeleteItem(entity) {
   return DeleteItem(locations, setLocations)
 }
 
-export function useDeleteLocation() {
-}
-
 function AddItem(data, setData) {
   const memoizedCallback = useCallback(
     newItem => {
