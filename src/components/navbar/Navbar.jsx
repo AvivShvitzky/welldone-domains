@@ -11,7 +11,7 @@ import Title from '../title/Title'
 // consts
 import {
   ICON_NEW, ICON_VIEW, ICON_EDIT, ICON_DELETE, ICON_HOME,
-  DELETE,
+  ACTION_DELETE,
   ENTITY_CATEGORIES
 } from '../../consts'
 import { ICONS_AVAILABILITY, TITLE_OPTIONS, NAVIGATE_OPTIONS } from './Navbar.consts'
@@ -32,7 +32,7 @@ function Navbar() {
   const currPickedCategory = useRecoilValue(currPickedCategoryAtom);
   const currPickedLocation = useRecoilValue(currPickedLocationAtom);
   const currentEntity = useRecoilValue(currentEntityAtom)
-  const deleteItem = Reducer(DELETE)
+  const deleteItem = Reducer(ACTION_DELETE)
 
   // consts
   const currentItem = currentEntity === ENTITY_CATEGORIES ? currPickedCategory : currPickedLocation

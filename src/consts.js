@@ -22,9 +22,9 @@ export const VIEW_LOCATION = 'VIEW_LOCATION'
 export const DELETE_LOCATION = 'DELETE_LOCATION'
 
 // actionTypes
-export const ADD = 'ADD'
-export const EDIT = 'EDIT'
-export const DELETE = 'DELETE'
+export const ACTION_ADD = 'ACTION_ADD'
+export const ACTION_EDIT = 'ACTION_EDIT'
+export const ACTION_DELETE = 'ACTION_DELETE'
 
 
 // entities

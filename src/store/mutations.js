@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import { useRecoilState, useRecoilValue } from "recoil";
 
 // consts
-import { ENTITY_CATEGORIES, ENTITY_LOCATIONS, ADD, EDIT, DELETE } from '../consts'
+import { ENTITY_CATEGORIES, ENTITY_LOCATIONS, ACTION_ADD, ACTION_EDIT, ACTION_DELETE } from '../consts'
 
 // atoms
 import { 
@@ -34,9 +34,9 @@ export function Reducer(actionType) {
 }
 
 function actionCaller(actionType, data, setData) {
-  if (actionType === ADD) return AddItem(data, setData)
-  if (actionType === EDIT) return EditItem(data, setData)
-  if (actionType === DELETE) return DeleteItem(data, setData)
+  if (actionType === ACTION_ADD) return AddItem(data, setData)
+  if (actionType === ACTION_EDIT) return EditItem(data, setData)
+  if (actionType === ACTION_DELETE) return DeleteItem(data, setData)
 }
 
 

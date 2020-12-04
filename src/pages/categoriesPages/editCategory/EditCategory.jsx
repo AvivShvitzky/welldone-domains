@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import Form from '../../../components/form/form-categories/Form'
 
 // consts
-import { EDIT_CATEGORY, ENTITY_CATEGORIES, EDIT } from '../../../consts'
+import { EDIT_CATEGORY, ENTITY_CATEGORIES, ACTION_EDIT } from '../../../consts'
 
 // store
 import { useSetRecoilState } from "recoil";
@@ -16,7 +16,7 @@ import { Reducer } from '../../../store/mutations'
 function EditCategory(props) {
   const [category, setCategory] = useState({ name: '' })
   const setCurrentPage = useSetRecoilState(currentPageAtom);
-  const editCategory = Reducer(EDIT)
+  const editCategory = Reducer(ACTION_EDIT)
 
   useEffect(() => {
     const categoryParam = props.match.params

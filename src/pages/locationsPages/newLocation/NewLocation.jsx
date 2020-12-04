@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import Form from '../../../components/form/form-locations/Form'
 
 // consts
-import { NEW_LOCATION, ADD } from '../../../consts'
+import { NEW_LOCATION, ACTION_ADD } from '../../../consts'
 
 // store
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -16,7 +16,7 @@ import { Reducer } from '../../../store/mutations'
 function NewCategory() {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
   const categories = useRecoilValue(categoriesAtom);
-  const addLocation = Reducer(ADD);
+  const addLocation = Reducer(ACTION_ADD);
 
   useEffect(() => {
     setCurrentPage(NEW_LOCATION)
