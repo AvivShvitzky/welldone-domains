@@ -14,14 +14,14 @@ import {
   categories as categoriesAtom, 
   currPickedLocation 
 } from '../../../store/atoms'
-import { Reducer } from '../../../store/mutations'
+import { useActionPicker } from '../../../store/mutations'
 
 
 function EditCategory() {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
   const location = useRecoilValue(currPickedLocation);
   const categories = useRecoilValue(categoriesAtom);
-  const editLocation = Reducer(ACTION_EDIT)
+  const editLocation = useActionPicker(ACTION_EDIT)
 
   useEffect(() => {
     setCurrentPage(EDIT_LOCATION)

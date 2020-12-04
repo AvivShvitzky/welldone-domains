@@ -10,13 +10,13 @@ import { NEW_LOCATION, ACTION_ADD } from '../../../consts'
 // store
 import { useRecoilState, useRecoilValue } from "recoil";
 import { currentPage as currentPageAtom, categories as categoriesAtom } from '../../../store/atoms'
-import { Reducer } from '../../../store/mutations'
+import { useActionPicker } from '../../../store/mutations'
 
 
 function NewCategory() {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
   const categories = useRecoilValue(categoriesAtom);
-  const addLocation = Reducer(ACTION_ADD);
+  const addLocation = useActionPicker(ACTION_ADD);
 
   useEffect(() => {
     setCurrentPage(NEW_LOCATION)

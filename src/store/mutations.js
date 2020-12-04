@@ -21,25 +21,25 @@ import {
 // utils
 import { deepCopyArray } from '../utils'
 
-export function Reducer(actionType) {
+export function useActionPicker(actionType) {
   const [categories, setCategories] = useRecoilState(categoriesAtom);
   const [locations, setLocations] = useRecoilState(locationsAtom);
   const currentEntity = useRecoilValue(currentEntityAtom)
   if (currentEntity === ENTITY_CATEGORIES) {
-    return actionCaller(actionType, categories, setCategories)
+    return useReducer(actionType, categories, setCategories)
   }
   if (currentEntity === ENTITY_LOCATIONS) {
-    return actionCaller(actionType, locations, setLocations)
+    return useReducer(actionType, locations, setLocations)
   }
 }
 
-function actionCaller(actionType, data, setData) {
-  if (actionType === ACTION_ADD) return AddItem(data, setData)
-  if (actionType === ACTION_EDIT) return EditItem(data, setData)
-  if (actionType === ACTION_DELETE) return DeleteItem(data, setData)
+function useReducer(actionType, data, setData) {
+  if (actionType === ACTION_ADD) return useAddItem(data, setData)
+  if (actionType === ACTION_EDIT) return useEditItem(data, setData)
+  if (actionType === ACTION_DELETE) return useDeleteItem(data, setData)
 }
 
-function AddItem(data, setData) {
+function useAddItem(data, setData) {
   const memoizedCallback = useCallback(
     newItem => {
       if (!entityExists(data, newItem)) {
@@ -62,7 +62,7 @@ function AddItem(data, setData) {
   return memoizedCallback;
 }
 
-export function EditItem(data, setData) {
+export function useEditItem(data, setData) {
   const memoizedCallback = useCallback(
     (originalItem, updatedItem) => {
       const ItemIndex = findIndexByName(data, originalItem)
@@ -87,7 +87,7 @@ export function EditItem(data, setData) {
   return memoizedCallback;
 }
 
-function DeleteItem(data, setData) {
+function useDeleteItem(data, setData) {
   const memoizedCallback = useCallback(
     currPickedEntity => {
       const itemIndex = findIndexByName(data, currPickedEntity.name)
