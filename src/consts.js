@@ -21,6 +21,12 @@ export const EDIT_LOCATION = 'EDIT_LOCATION'
 export const VIEW_LOCATION = 'VIEW_LOCATION'
 export const DELETE_LOCATION = 'DELETE_LOCATION'
 
+// actionTypes
+export const ADD = 'ADD'
+export const EDIT = 'EDIT'
+export const DELETE = 'DELETE'
+
+
 // entities
 export const ENTITY_CATEGORIES = 'CATEGORIES'
 export const ENTITY_LOCATIONS = 'LOCATIONS'

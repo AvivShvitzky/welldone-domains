@@ -1,14 +1,15 @@
 // libraries
 import { useCallback } from 'react';
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 // consts
-import { ENTITY_CATEGORIES } from '../consts'
+import { ENTITY_CATEGORIES, ENTITY_LOCATIONS, ADD, EDIT, DELETE } from '../consts'
 
 // atoms
 import { 
   categories as categoriesAtom, 
   locations as locationsAtom,
+  currentEntity as currentEntityAtom
 } 
 from './atoms'
 
@@ -19,6 +20,25 @@ import {
 } from './utils'
 // utils
 import { deepCopyArray } from '../utils'
+
+export function Reducer(actionType) {
+  const [categories, setCategories] = useRecoilState(categoriesAtom);
+  const [locations, setLocations] = useRecoilState(locationsAtom);
+  const currentEntity = useRecoilValue(currentEntityAtom)
+  if (currentEntity === ENTITY_CATEGORIES) {
+    return actionCaller(actionType, categories, setCategories)
+  }
+  if (currentEntity === ENTITY_LOCATIONS) {
+    return actionCaller(actionType, locations, setLocations)
+  }
+}
+
+function actionCaller(actionType, data, setData) {
+  if (actionType === ADD) return AddItem(data, setData)
+  if (actionType === EDIT) return EditItem(data, setData)
+  if (actionType === DELETE) return DeleteItem(data, setData)
+}
+
 
 export function useAddItem(entity) {
   const [categories, setCategories] = useRecoilState(categoriesAtom);

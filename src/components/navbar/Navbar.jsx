@@ -11,6 +11,7 @@ import Title from '../title/Title'
 // consts
 import {
   ICON_NEW, ICON_VIEW, ICON_EDIT, ICON_DELETE, ICON_HOME,
+  DELETE,
   ENTITY_CATEGORIES
 } from '../../consts'
 import { ICONS_AVAILABILITY, TITLE_OPTIONS, NAVIGATE_OPTIONS } from './Navbar.consts'
@@ -23,7 +24,7 @@ import {
   currPickedLocation as currPickedLocationAtom,
   currentEntity as currentEntityAtom
 } from "../../store/atoms";
-import { useDeleteItem } from '../../store/mutations'
+import { Reducer } from '../../store/mutations'
 
 function Navbar() {
   // state
@@ -31,7 +32,7 @@ function Navbar() {
   const currPickedCategory = useRecoilValue(currPickedCategoryAtom);
   const currPickedLocation = useRecoilValue(currPickedLocationAtom);
   const currentEntity = useRecoilValue(currentEntityAtom)
-  const deleteItem = useDeleteItem(currentEntity)
+  const deleteItem = Reducer(DELETE)
 
   // consts
   const currentItem = currentEntity === ENTITY_CATEGORIES ? currPickedCategory : currPickedLocation
