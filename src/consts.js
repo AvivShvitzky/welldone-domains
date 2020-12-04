@@ -1,9 +1,15 @@
-// icon types
-export const ICON_NEW = 'ICON_NEW'
-export const ICON_VIEW = 'ICON_VIEW'
-export const ICON_EDIT = 'ICON_EDIT'
-export const ICON_DELETE = 'ICON_DELETE'
-export const ICON_HOME = 'ICON_HOME'
+// actionTypes
+export const ACTION_ADD = 'ACTION_ADD'
+export const ACTION_EDIT = 'ACTION_EDIT'
+export const ACTION_DELETE = 'ACTION_DELETE'
+
+// entities
+export const ENTITY_CATEGORIES = 'CATEGORIES'
+export const ENTITY_LOCATIONS = 'LOCATIONS'
+
+// paths
+export const PATH_CATEGORY = '/categories'
+export const PATH_LOCATIONS = '/locations'
 
 // pages and contexes
 export const NOT_MOUNTED = 'NOT_MOUNTED'
@@ -21,18 +27,11 @@ export const EDIT_LOCATION = 'EDIT_LOCATION'
 export const VIEW_LOCATION = 'VIEW_LOCATION'
 export const DELETE_LOCATION = 'DELETE_LOCATION'
 
-// actionTypes
-export const ACTION_ADD = 'ACTION_ADD'
-export const ACTION_EDIT = 'ACTION_EDIT'
-export const ACTION_DELETE = 'ACTION_DELETE'
-
-
-// entities
-export const ENTITY_CATEGORIES = 'CATEGORIES'
-export const ENTITY_LOCATIONS = 'LOCATIONS'
-
-// paths
-export const PATH_CATEGORY = '/categories'
-export const PATH_LOCATIONS = '/locations'
+// icon types
+export const ICON_NEW = 'ICON_NEW'
+export const ICON_VIEW = 'ICON_VIEW'
+export const ICON_EDIT = 'ICON_EDIT'
+export const ICON_DELETE = 'ICON_DELETE'
+export const ICON_HOME = 'ICON_HOME'
 
 
