@@ -39,34 +39,6 @@ function actionCaller(actionType, data, setData) {
   if (actionType === ACTION_DELETE) return DeleteItem(data, setData)
 }
 
-
-export function useAddItem(entity) {
-  const [categories, setCategories] = useRecoilState(categoriesAtom);
-  const [locations, setLocations] = useRecoilState(locationsAtom);
-  if (entity === ENTITY_CATEGORIES) {
-    return AddItem(categories, setCategories)
-  } 
-  return AddItem(locations, setLocations)
-}
-
-export function useEditItem(entity) {
-  const [categories, setCategories] = useRecoilState(categoriesAtom);
-  const [locations, setLocations] = useRecoilState(locationsAtom);
-  if (entity === ENTITY_CATEGORIES) {
-    return EditItem(categories, setCategories)
-  }
-  return EditItem(locations, setLocations)
-}
-
-export function useDeleteItem(entity) {
-  const [categories, setCategories] = useRecoilState(categoriesAtom);
-  const [locations, setLocations] = useRecoilState(locationsAtom);
-  if (entity === ENTITY_CATEGORIES) {
-    return DeleteItem(categories, setCategories)
-  }
-  return DeleteItem(locations, setLocations)
-}
-
 function AddItem(data, setData) {
   const memoizedCallback = useCallback(
     newItem => {
