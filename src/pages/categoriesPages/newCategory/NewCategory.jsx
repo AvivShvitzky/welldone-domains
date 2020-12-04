@@ -10,12 +10,12 @@ import { NEW_CATEGORY, ACTION_ADD } from '../../../consts'
 // store
 import { useRecoilState } from "recoil";
 import { currentPage as currentPageAtom } from '../../../store/atoms'
-import { useActionPicker } from '../../../store/mutations'
+import { useEntityReducer } from '../../../store/mutations'
 
 
 function NewCategory() {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
-  const addCategory = useActionPicker(ACTION_ADD)
+  const addCategory = useEntityReducer(ACTION_ADD)
 
   useEffect(() => {
     setCurrentPage(NEW_CATEGORY)

@@ -24,7 +24,7 @@ import {
   currPickedLocation as currPickedLocationAtom,
   currentEntity as currentEntityAtom
 } from "../../store/atoms";
-import { useActionPicker } from '../../store/mutations'
+import { useEntityReducer } from '../../store/mutations'
 
 function Navbar() {
   // state
@@ -32,7 +32,7 @@ function Navbar() {
   const currPickedCategory = useRecoilValue(currPickedCategoryAtom);
   const currPickedLocation = useRecoilValue(currPickedLocationAtom);
   const currentEntity = useRecoilValue(currentEntityAtom)
-  const deleteItem = useActionPicker(ACTION_DELETE)
+  const deleteItem = useEntityReducer(ACTION_DELETE)
 
   // consts
   const currentItem = currentEntity === ENTITY_CATEGORIES ? currPickedCategory : currPickedLocation

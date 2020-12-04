@@ -10,13 +10,13 @@ import { EDIT_CATEGORY, ENTITY_CATEGORIES, ACTION_EDIT } from '../../../consts'
 // store
 import { useSetRecoilState } from "recoil";
 import { currentPage as currentPageAtom } from '../../../store/atoms'
-import { useActionPicker } from '../../../store/mutations'
+import { useEntityReducer } from '../../../store/mutations'
 
 
 function EditCategory(props) {
   const [category, setCategory] = useState({ name: '' })
   const setCurrentPage = useSetRecoilState(currentPageAtom);
-  const editCategory = useActionPicker(ACTION_EDIT)
+  const editCategory = useEntityReducer(ACTION_EDIT)
 
   useEffect(() => {
     const categoryParam = props.match.params

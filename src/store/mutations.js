@@ -21,19 +21,19 @@ import {
 // utils
 import { deepCopyArray } from '../utils'
 
-export function useActionPicker(actionType) {
+export function useEntityReducer(actionType) {
   const [categories, setCategories] = useRecoilState(categoriesAtom);
   const [locations, setLocations] = useRecoilState(locationsAtom);
   const currentEntity = useRecoilValue(currentEntityAtom)
   if (currentEntity === ENTITY_CATEGORIES) {
-    return useReducer(actionType, categories, setCategories)
+    return useActionPicker(actionType, categories, setCategories)
   }
   if (currentEntity === ENTITY_LOCATIONS) {
-    return useReducer(actionType, locations, setLocations)
+    return useActionPicker(actionType, locations, setLocations)
   }
 }
 
-function useReducer(actionType, data, setData) {
+function useActionPicker(actionType, data, setData) {
   if (actionType === ACTION_ADD) return useAddItem(data, setData)
   if (actionType === ACTION_EDIT) return useEditItem(data, setData)
   if (actionType === ACTION_DELETE) return useDeleteItem(data, setData)
