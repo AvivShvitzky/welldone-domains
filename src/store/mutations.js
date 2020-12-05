@@ -1,15 +1,14 @@
 // libraries
 import { useCallback } from 'react';
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 
 // consts
-import { ENTITY_CATEGORIES, ENTITY_LOCATIONS, ACTION_ADD, ACTION_EDIT, ACTION_DELETE } from '../consts'
+import { ENTITY_CATEGORIES } from '../consts'
 
 // atoms
 import { 
   categories as categoriesAtom, 
   locations as locationsAtom,
-  currentEntity as currentEntityAtom
 } 
 from './atoms'
 
@@ -21,25 +20,34 @@ import {
 // utils
 import { deepCopyArray } from '../utils'
 
-export function useEntityReducer(actionType) {
+export function useAddItem(entity) {
   const [categories, setCategories] = useRecoilState(categoriesAtom);
   const [locations, setLocations] = useRecoilState(locationsAtom);
-  const currentEntity = useRecoilValue(currentEntityAtom)
-  if (currentEntity === ENTITY_CATEGORIES) {
-    return useActionPicker(actionType, categories, setCategories)
-  }
-  if (currentEntity === ENTITY_LOCATIONS) {
-    return useActionPicker(actionType, locations, setLocations)
-  }
+  if (entity === ENTITY_CATEGORIES) {
+    return AddItem(categories, setCategories)
+  } 
+  return AddItem(locations, setLocations)
 }
 
-function useActionPicker(actionType, data, setData) {
-  if (actionType === ACTION_ADD) return useAddItem(data, setData)
-  if (actionType === ACTION_EDIT) return useEditItem(data, setData)
-  if (actionType === ACTION_DELETE) return useDeleteItem(data, setData)
+export function useEditItem(entity) {
+  const [categories, setCategories] = useRecoilState(categoriesAtom);
+  const [locations, setLocations] = useRecoilState(locationsAtom);
+  if (entity === ENTITY_CATEGORIES) {
+    return EditItem(categories, setCategories)
+  }
+  return EditItem(locations, setLocations)
 }
 
-function useAddItem(data, setData) {
+export function useDeleteItem(entity) {
+  const [categories, setCategories] = useRecoilState(categoriesAtom);
+  const [locations, setLocations] = useRecoilState(locationsAtom);
+  if (entity === ENTITY_CATEGORIES) {
+    return DeleteItem(categories, setCategories)
+  }
+  return DeleteItem(locations, setLocations)
+}
+
+function AddItem(data, setData) {
   const memoizedCallback = useCallback(
     newItem => {
       if (!entityExists(data, newItem)) {
@@ -62,7 +70,7 @@ function useAddItem(data, setData) {
   return memoizedCallback;
 }
 
-export function useEditItem(data, setData) {
+export function EditItem(data, setData) {
   const memoizedCallback = useCallback(
     (originalItem, updatedItem) => {
       const ItemIndex = findIndexByName(data, originalItem)
@@ -87,7 +95,7 @@ export function useEditItem(data, setData) {
   return memoizedCallback;
 }
 
-function useDeleteItem(data, setData) {
+function DeleteItem(data, setData) {
   const memoizedCallback = useCallback(
     currPickedEntity => {
       const itemIndex = findIndexByName(data, currPickedEntity.name)
