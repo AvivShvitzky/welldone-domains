@@ -98,6 +98,8 @@ export function EditItem(data, setData) {
 function DeleteItem(data, setData) {
   const memoizedCallback = useCallback(
     currPickedEntity => {
+      // const mutatedArray = data.filter(item => item.name !== currPickedEntity.name)
+      // setData(copiedData)
       const itemIndex = findIndexByName(data, currPickedEntity.name)
       if (itemIndex !== -1) {
         const copiedData = deepCopyArray(data)

@@ -19,11 +19,7 @@ import EditLocation from './pages/locationsPages/editLocation/EditLocation'
 import Navbar from './components/navbar/Navbar'
 import Footer from './components/footer/Footer'
 
-import { useRecoilState } from "recoil";
-import { currentEntity as currentEntityAtom } from './store/atoms'
-
 const Router = () => {
-  const [currentEntity, setCurrentEntity] = useRecoilState(currentEntityAtom);
   return (
     <BrowserRouter>
       <Navbar />
@@ -34,12 +30,12 @@ const Router = () => {
         <Route exact default path="/categories"
           component={Categories}
         />
-        <Route exact default path="/new-category"
+        {/* <Route exact default path="/new-category"
           component={NewCategory}
         />
         <Route path="/category/:name"
           component={ViewCategory}
-        />
+        /> */}
         <Route path="/edit-category/:name"
           component={EditCategory}
         />
@@ -47,12 +43,12 @@ const Router = () => {
         <Route exact default path="/locations"
           component={Locations}
         />
-        <Route exact default path="/new-location"
+        {/* <Route exact default path="/new-location"
           component={NewLocation}
         />
         <Route path="/location/:name"
           component={ViewLocation}
-        />
+        /> */}
         <Route path="/edit-location/:name"
           component={EditLocation}
         />

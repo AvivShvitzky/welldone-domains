@@ -8,24 +8,23 @@ import Form from '../../../components/form/form-categories/Form'
 import { EDIT_CATEGORY, ENTITY_CATEGORIES } from '../../../consts'
 
 // store
-import { useSetRecoilState } from "recoil";
-import { currentPage as currentPageAtom } from '../../../store/atoms'
-import { useEditItem } from '../../../store/mutations'
+import { editCategory } from '../../../store/actions/actions'
+import { useDispatch } from 'react-redux'
 
 
 function EditCategory(props) {
+  const dispatch = useDispatch()
   const [category, setCategory] = useState({ name: '' })
-  const setCurrentPage = useSetRecoilState(currentPageAtom);
-  const editCategory = useEditItem(ENTITY_CATEGORIES)
+  // const setCurrentPage = useSetRecoilState(currentPageAtom);
+  // const editCategory = useEditItem(ENTITY_CATEGORIES)
 
   useEffect(() => {
-    const categoryParam = props.match.params
-    setCategory(categoryParam)
-    setCurrentPage(EDIT_CATEGORY)
+    setCategory(props.match.params)
+    // setCurrentPage(EDIT_CATEGORY)
   }, [])
 
-  const editClickHandler = newCategoryName => {
-    return editCategory(category.name, newCategoryName)
+  const editClickHandler = updatedCategory => {
+    dispatch(editCategory(updatedCategory))
   }
 
   return (

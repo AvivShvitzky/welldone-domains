@@ -11,20 +11,13 @@ import { CATEGORIES, CATEGORIES_CHECKED, ENTITY_CATEGORIES } from '../../../cons
 import { isParentEvent } from '../../../utils'
 
 // store
-import { useRecoilValue, useSetRecoilState } from "recoil"; 
-import { 
-  categories as categoriesAtom,
-  currentPage as currentPageAtom,
-  currPickedCategory as currPickedListItemAtom,
-  currentEntity as currentEntityAtom
-} 
-from '../../../store/atoms'
+
 
 function Categories(props) {
-  const categories = useRecoilValue(categoriesAtom);
-  const setCurrentPage = useSetRecoilState(currentPageAtom)
-  const setCurrentEntity = useSetRecoilState(currentEntityAtom)
-  const setCurrPickedListItem = useSetRecoilState(currPickedListItemAtom)
+  // const categories = useRecoilValue(categoriesAtom);
+  // const setCurrentPage = useSetRecoilState(currentPageAtom)
+  // const setCurrentEntity = useSetRecoilState(currentEntityAtom)
+  // const setCurrPickedListItem = useSetRecoilState(currPickedListItemAtom)
 
   useEffect(() => {
     setCurrentPage(CATEGORIES)

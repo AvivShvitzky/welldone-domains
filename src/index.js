@@ -6,11 +6,17 @@ import { RecoilRoot } from "recoil";
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import rootReducer from './store/reducers'
+
+const store = createStore(rootReducer)
+
 ReactDOM.render(
   <React.StrictMode>
-    <RecoilRoot>
+    <Provider store={store}>
       <Router />
-    </RecoilRoot>
+      </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
