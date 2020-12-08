@@ -7,12 +7,8 @@
 // 
 export function isParentEvent(event) {
   event.preventDefault();
-  if (event.target === event.currentTarget) {
-    return true
-  }
-  return false
+  return event.target === event.currentTarget
 }
-
 
 /**
 * returns a deep copy of an array.
@@ -20,6 +16,5 @@ export function isParentEvent(event) {
 * @returns a deep copy of an array.
 */
 export function deepCopyArray(array) {
-  const copiedArray = JSON.parse(JSON.stringify(array))
-  return copiedArray;
+  return JSON.parse(JSON.stringify(array));
 }
