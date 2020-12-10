@@ -1,10 +1,19 @@
-import { 
-  EDIT_CATEGORY 
-} 
-from './types'
-
 import { categories } from '../mockData'
 
+// constants
+const EDIT_CATEGORY = 'EDIT_CATEGORY';
+
+// actions
+export const editCategory = updatedCategory => {
+  return {
+    type: EDIT_CATEGORY,
+    payload: { 
+      updatedCategory
+    }
+  }
+}
+
+// reducer
 export default (state = categories, action) => {
   switch (action.type) {
     case EDIT_CATEGORY:

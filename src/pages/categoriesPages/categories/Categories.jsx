@@ -16,7 +16,7 @@ import {
   setCurrentPage,
   setCurrentPickedItem
 } 
-from '../../../store/context/actions'
+from '../../../store/features/context'
 import { useDispatch, useSelector } from 'react-redux'
 
 function Categories() {

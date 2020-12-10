@@ -7,7 +7,7 @@ export const categories = [
   { id: 6, name: 'parks' },
 ]
 
-export const Locations = [
+export const locations = [
   {"id": 1,"name":"Gines-Patay","category":"houses","address":"3306 Emmet Avenue","longitude":122.468440,"latitude":10.932180},
   {"id": 2,"name":"Dū Laīnah","category":"hotels","address":"2 Leroy Alley","longitude":-6.837620,"latitude":34.021990},
   {"id": 3,"name":"Leeuwarden","category":"houses","address":"412 Rockefeller Lane","longitude":5.8112912,"latitude":53.2012042},

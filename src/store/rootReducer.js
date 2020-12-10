@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
-import categoriesReducer from './categories/reducer'
-import locationsReducer from './locations/reducer'
-import contextReducer from './context/reducer'
+import categoriesReducer from './features/categories'
+import locationsReducer from './features/locations'
+import contextReducer from './features/context'
 
 export default combineReducers({
   categories: categoriesReducer,

@@ -8,7 +8,7 @@ import Form from '../../../components/form/form-categories/Form'
 import { EDIT_CATEGORY, ENTITY_CATEGORIES } from '../../../consts'
 
 // store
-import { editCategory } from '../../../store/categories/actions'
+import { editCategory } from '../../../store/features/categories'
 import { useDispatch, useSelector } from 'react-redux'
 
 

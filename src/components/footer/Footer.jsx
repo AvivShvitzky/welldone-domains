@@ -12,7 +12,7 @@ import {
 
 // store
 import { useDispatch } from 'react-redux';
-import { setCurrentEntity } from '../../store/context/actions'
+import { setCurrentEntity } from '../../store/features/context'
 // import { useRecoilState } from "recoil";
 // import { currentEntity as currentEntityAtom } from '../../store/atoms'
 

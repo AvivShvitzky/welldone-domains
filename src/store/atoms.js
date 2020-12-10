@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 
 import { NOT_MOUNTED, CATEGORIES } from '../consts'
-import { categories as categoriesData, Locations as LocationsData } from './mockData'
+import { categories as categoriesData, locations as LocationsData } from './mockData'
 
 export const currentPage = atom({
   key: 'currentPage',
