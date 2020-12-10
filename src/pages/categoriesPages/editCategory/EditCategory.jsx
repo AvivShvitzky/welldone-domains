@@ -8,23 +8,17 @@ import Form from '../../../components/form/form-categories/Form'
 import { EDIT_CATEGORY, ENTITY_CATEGORIES } from '../../../consts'
 
 // store
-import { editCategory } from '../../../store/actions/actions'
-import { useDispatch } from 'react-redux'
+import { editCategory } from '../../../store/categories/actions'
+import { useDispatch, useSelector } from 'react-redux'
 
 
-function EditCategory(props) {
+function EditCategory() {
+  const currentCategory = useSelector(state => state.context.currentPickedItem)
   const dispatch = useDispatch()
-  const [category, setCategory] = useState({ name: '' })
-  // const setCurrentPage = useSetRecoilState(currentPageAtom);
-  // const editCategory = useEditItem(ENTITY_CATEGORIES)
-
-  useEffect(() => {
-    setCategory(props.match.params)
-    // setCurrentPage(EDIT_CATEGORY)
-  }, [])
 
   const editClickHandler = updatedCategory => {
     dispatch(editCategory(updatedCategory))
+    console.log(updatedCategory);
   }
 
   return (
@@ -32,7 +26,7 @@ function EditCategory(props) {
       <div className="page__content">
         <Form 
           clickHandler={editClickHandler}
-          categoryName={category.name}
+          currentCategory={currentCategory}
         />
       </div>
     </div>

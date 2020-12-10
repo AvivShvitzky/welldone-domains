@@ -20,16 +20,9 @@ import { NEW_CATEGORY, EDIT_CATEGORY } from '../../../consts'
 
 import useToast from '../../toast/Toast'
 
-function Form({ clickHandler, currentPage, categoryName}) {
-  const [value, setValue] = useState('')
+function Form({ clickHandler, currentPage, currentCategory }) {
+  const [category, setCategory] = useState(currentCategory)
   const toast = useToast()
-
-  // initial
-  useEffect(() => {
-    if (categoryName) {
-      setValue(categoryName)
-    }
-  },[categoryName])
 
   // clean up
   useEffect(() => {
@@ -38,9 +31,15 @@ function Form({ clickHandler, currentPage, categoryName}) {
     };
   }, []);
 
+  const onChangeHandler = value => {
+    console.log(category);
+    const updatedCategory = {...category, name: value}
+    setCategory(updatedCategory)
+  }
+
   const onSubmitHandler = e => {
     e.preventDefault();
-    const success = clickHandler(value);
+    const success = clickHandler(category);
     const toastTuple = () => {
       if (currentPage === NEW_CATEGORY) {
         return [NEW_CATEGORY_SUCCESS, NEW_CATEGORY_FAIL]
@@ -55,16 +54,16 @@ function Form({ clickHandler, currentPage, categoryName}) {
       toast(CREATE_TOAST, TOAST_WARNING, toastTuple()[1])
     }
     // clean data
-    setValue('')
+    setCategory('')
   }
  
   return (
     <form>
       <div className="form-group">
         <Input 
-          value={value}
+          category={category}
           label="Category Name"
-          onChangeHandler={setValue}
+          onChangeHandler={onChangeHandler}
         />
         <small id="categoryHelp" className="form-text text-muted">Enter a name for a category.</small>
       </div>

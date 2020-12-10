@@ -5,15 +5,23 @@ import React, { useEffect } from 'react';
 import List from '../../../components/list/List'
 
 // consts
-import { CATEGORIES, CATEGORIES_CHECKED, ENTITY_CATEGORIES } from '../../../consts'
+import { CATEGORIES, CATEGORIES_CHECKED } from '../../../consts'
 
 // utils
 import { isParentEvent } from '../../../utils'
 
 // store
+import { 
+  setCurrentEntity, 
+  setCurrentPage,
+  setCurrentPickedItem
+} 
+from '../../../store/context/actions'
+import { useDispatch, useSelector } from 'react-redux'
 
-
-function Categories(props) {
+function Categories() {
+  const categories = useSelector(state => state.categories)
+  const dispatch = useDispatch()
   // const categories = useRecoilValue(categoriesAtom);
   // const setCurrentPage = useSetRecoilState(currentPageAtom)
   // const setCurrentEntity = useSetRecoilState(currentEntityAtom)
@@ -21,19 +29,19 @@ function Categories(props) {
 
   useEffect(() => {
     setCurrentPage(CATEGORIES)
-    setCurrentEntity(ENTITY_CATEGORIES)
+    dispatch(setCurrentEntity(CATEGORIES))
   }, [])
 
   // allows the parent div to fire a click event seperate from his childs
   const onParentClick = event => {
     if (isParentEvent(event)) {
-      setCurrentPage(CATEGORIES)
+      dispatch(setCurrentPage(CATEGORIES))
     }
   }
 
-  const onListItemClick = (listItem) => {
-    setCurrentPage(CATEGORIES_CHECKED)
-    setCurrPickedListItem(listItem)
+  const onListItemClick = (item) => {
+    dispatch(setCurrentPage(CATEGORIES_CHECKED))
+    dispatch(setCurrentPickedItem(item))
   }
 
   return (

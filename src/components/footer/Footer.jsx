@@ -6,33 +6,35 @@ import RouterLink from '../router-link/RouterLink'
 
 // consts
 import { 
-  ENTITY_CATEGORIES, ENTITY_LOCATIONS,
+  CATEGORIES, LOCATIONS,
   PATH_CATEGORY, PATH_LOCATIONS
 } from '../../consts'
 
 // store
-import { useRecoilState } from "recoil";
-import { currentEntity as currentEntityAtom } from '../../store/atoms'
+import { useDispatch } from 'react-redux';
+import { setCurrentEntity } from '../../store/context/actions'
+// import { useRecoilState } from "recoil";
+// import { currentEntity as currentEntityAtom } from '../../store/atoms'
 
 function Footer() {
-  const [currentEntity, setCurrentEntity] = useRecoilState(currentEntityAtom)
+  const dispatch = useDispatch()
 
-  const handleNavigate = newEntity => {
-    setCurrentEntity(newEntity)
+  const handleNavigate = currentEntity => {
+    dispatch(setCurrentEntity(currentEntity))
   }
 
   return (
     <div className="footer">
       <RouterLink 
         onClickHandler={handleNavigate}
-        entity={ENTITY_LOCATIONS}
+        entity={LOCATIONS}
         path={PATH_LOCATIONS}
       >
         Locations
       </RouterLink>
       <RouterLink 
         onClickHandler={handleNavigate}
-        entity={ENTITY_CATEGORIES}
+        entity={CATEGORIES}
         path={PATH_CATEGORY}
       >
         Categories

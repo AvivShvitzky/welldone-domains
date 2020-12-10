@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faEdit, faBookOpen, faTrashAlt, faHome } from '@fortawesome/free-solid-svg-icons'
 import './Navbar.css';
+import { useSelector, useDispatch } from 'react-redux';
 
 // components
 import Title from '../title/Title'
@@ -16,25 +17,27 @@ import {
 import { ICONS_AVAILABILITY, TITLE_OPTIONS, NAVIGATE_OPTIONS } from './Navbar.consts'
 
 // store
-import { useRecoilValue } from "recoil";
-import { 
-  currentPage as currentPageAtom,
-  currPickedCategory as currPickedCategoryAtom,
-  currPickedLocation as currPickedLocationAtom,
-  currentEntity as currentEntityAtom
-} from "../../store/atoms";
-import { useDeleteItem } from '../../store/mutations'
+// import { useRecoilValue } from "recoil";
+// import { 
+//   currentPage as currentPageAtom,
+//   currPickedCategory as currPickedCategoryAtom,
+//   currPickedLocation as currPickedLocationAtom,
+//   currentEntity as currentEntityAtom
+// } from "../../store/atoms";
+// import { useDeleteItem } from '../../store/mutations'
 
 function Navbar() {
   // state
-  const currentPage = useRecoilValue(currentPageAtom);
-  const currPickedCategory = useRecoilValue(currPickedCategoryAtom);
-  const currPickedLocation = useRecoilValue(currPickedLocationAtom);
-  const currentEntity = useRecoilValue(currentEntityAtom)
-  const deleteItem = useDeleteItem(currentEntity)
+  const currentPage = useSelector(state => state.context.currentPage);
+  const currentEntity = useSelector(state => state.context.currentEntity);
+
+  // const currPickedCategory = useRecoilValue(currPickedCategoryAtom);
+  // const currPickedLocation = useRecoilValue(currPickedLocationAtom);
+  // const currentEntity = useRecoilValue(currentEntityAtom)
+  // const deleteItem = useDeleteItem(currentEntity)
 
   // consts
-  const currentItem = currentEntity === ENTITY_CATEGORIES ? currPickedCategory : currPickedLocation
+  const currentItem = useSelector(state => state.context.currentPickedItem)
   const title = TITLE_OPTIONS[currentPage]
   const iconAvailable = iconType => {
     return ICONS_AVAILABILITY[currentPage].includes(iconType)
@@ -102,7 +105,7 @@ function Navbar() {
             size="lg"/>
           <span>Edit</span>
         </Link>
-        <div 
+        {/* <div 
           className={`icon__box ${iconAvailable(ICON_DELETE) ? 'icon__box--available' : 'icon__box--unavailable'}`}
           onClick={() => deleteItem(currentItem)}  
         >
@@ -110,7 +113,7 @@ function Navbar() {
             icon={faTrashAlt} 
             size="lg"/>
           <span>Delete</span>
-        </div>
+        </div> */}
       </div>
     </nav>
   );
