@@ -14,15 +14,15 @@ export const editLocationActionCreator = (id, location) => {
   }
 }
 
-// reducer TODO!!!!
+// reducer
 export default (state = locations, action) => {
   switch (action.type) {
     case EDIT_LOCATION:
-      const { updatedCategory } = action.payload;
-      return state.map(category => 
-        category.id === updatedCategory.id 
-        ? { ...category, ...updatedCategory } 
-        : category
+      const { updatedLocation } = action.payload;
+      return state.map(location => 
+        location.id === updatedLocation.id 
+        ? { ...location, ...updatedLocation } 
+        : location
       )
     default:
       return state

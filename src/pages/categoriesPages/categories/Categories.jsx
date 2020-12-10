@@ -28,9 +28,9 @@ function Categories() {
   // const setCurrPickedListItem = useSetRecoilState(currPickedListItemAtom)
 
   useEffect(() => {
-    setCurrentPage(CATEGORIES)
+    dispatch(setCurrentPage(CATEGORIES))
     dispatch(setCurrentEntity(CATEGORIES))
-  }, [])
+  }, [categories])
 
   // allows the parent div to fire a click event seperate from his childs
   const onParentClick = event => {

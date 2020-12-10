@@ -12,36 +12,33 @@ import { columns } from '../../../components/table/columns'
 import { isParentEvent } from '../../../utils'
 
 // store
-import { useRecoilValue, useSetRecoilState } from "recoil"; 
 import { 
-  locations as locationsAtom,
-  currentPage as currentPageAtom,
-  currPickedLocation as currPickedListItemAtom,
-  currentEntity as currentEntityAtom
+  setCurrentEntity, 
+  setCurrentPage,
+  setCurrentPickedItem
 } 
-from '../../../store/atoms'
+from '../../../store/features/context'
+import { useDispatch, useSelector } from 'react-redux'
 
 function Locations(props) {
-  const locations = useRecoilValue(locationsAtom);
-  const setCurrentPage = useSetRecoilState(currentPageAtom)
-  const setCurrentEntity = useSetRecoilState(currentEntityAtom)
-  const setCurrPickedListItem = useSetRecoilState(currPickedListItemAtom)
+  const locations = useSelector(state => state.locations)
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    setCurrentPage(LOCATIONS)
-    setCurrentEntity(ENTITY_LOCATIONS)
+    dispatch(setCurrentPage(LOCATIONS))
+    dispatch(setCurrentEntity(LOCATIONS))
   }, [locations])
 
   // allows the parent div to fire a click event seperate from his childs
   const onParentClick = event => {
     if (isParentEvent(event)) {
-      setCurrentPage(LOCATIONS)
+      dispatch(setCurrentPage(LOCATIONS))
     }
   }
 
   const onListItemClick = (listItem) => {
-    setCurrentPage(LOCATIONS_CHECKED)
-    setCurrPickedListItem(listItem)
+    dispatch(setCurrentPage(LOCATIONS_CHECKED))
+    dispatch(setCurrentPickedItem(listItem))
   }
 
   return (
