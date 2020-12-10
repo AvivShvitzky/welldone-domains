@@ -1,5 +1,6 @@
 // libraries and css
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import '../Form.css'
 
 // components
@@ -21,25 +22,14 @@ import { NEW_CATEGORY, EDIT_CATEGORY } from '../../../consts'
 
 import useToast from '../../toast/Toast'
 
-function Form({ clickHandler, currentPage, categories, location }) {
-  const [locationName, setLocationName] = useState('')
-  const [categoryName, setCategoryName] = useState('playgrounds')
-  const [address, setAddress] = useState('')
-  const [longitude, setLongitude] = useState('')
-  const [latitude, setLatitude] = useState('')
+function Form({ clickHandler, categories = [], location = {} }) {
+  const [locationName, setLocationName] = useState(location.name)
+  const [categoryName, setCategoryName] = useState(location.category)
+  const [address, setAddress] = useState(location.address)
+  const [longitude, setLongitude] = useState(location.longitude)
+  const [latitude, setLatitude] = useState(location.latitude)
 
   const toast = useToast()
-
-  // initial
-  useEffect(() => {
-    if (location) {
-      setLocationName(location.name)
-      setCategoryName(location.category)
-      setAddress(location.address)
-      setLongitude(location.longitude)
-      setLatitude(location.latitude)
-    }
-  },[location])
 
   // clean up
   useEffect(() => {
@@ -50,32 +40,15 @@ function Form({ clickHandler, currentPage, categories, location }) {
 
   const onSubmitHandler = e => {
     e.preventDefault();
-    const success = clickHandler({
+    clickHandler({
+      ...location,
       name: locationName,
       category: categoryName,
       address,
       longitude,
       latitude
     });
-    const toastTuple = () => {
-      if (currentPage === NEW_CATEGORY) {
-        return [NEW_CATEGORY_SUCCESS, NEW_CATEGORY_FAIL]
-      } else if (EDIT_CATEGORY) {
-        return [EDIT_CATEGORY_SUCCESS, EDIT_CATEGORY_FAIL]
-      }
-    }
-    // trigger a toast
-    if (success) {
-      toast(CREATE_TOAST, TOAST_SUCCESS, toastTuple()[0])
-    } else {
-      toast(CREATE_TOAST, TOAST_WARNING, toastTuple()[1])
-    }
-    // clean data
-    setLocationName('')
-    setCategoryName('')
-    setAddress('')
-    setLongitude('')
-    setLatitude('')
+    toast(CREATE_TOAST, TOAST_SUCCESS, EDIT_CATEGORY_SUCCESS)
   }
  
   return (
@@ -119,4 +92,11 @@ function Form({ clickHandler, currentPage, categories, location }) {
   );
 };
 
+Form.propTypes = {
+  clickHandler: PropTypes.func.isRequired,
+  categories: PropTypes.array.isRequired,
+  location: PropTypes.object.isRequired
+}
+
 export default Form;
+

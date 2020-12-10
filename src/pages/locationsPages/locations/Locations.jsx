@@ -36,7 +36,7 @@ function Locations(props) {
     }
   }
 
-  const onListItemClick = (listItem) => {
+  const onListItemClick = listItem => {
     dispatch(setCurrentPage(LOCATIONS_CHECKED))
     dispatch(setCurrentPickedItem(listItem))
   }

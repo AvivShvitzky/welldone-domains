@@ -43,7 +43,7 @@ function Form({ clickHandler, currentCategory = {} }) {
     <form>
       <div className="form-group">
         <Input 
-          category={category}
+          value={category.name}
           label="Category Name"
           onChangeHandler={onChangeHandler}
           />

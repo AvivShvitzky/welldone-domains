@@ -8,27 +8,16 @@ import Form from '../../../components/form/form-locations/Form'
 import { EDIT_LOCATION, ENTITY_LOCATIONS } from '../../../consts'
 
 // store
-import { useRecoilState, useRecoilValue } from "recoil";
-import { 
-  currentPage as currentPageAtom, 
-  categories as categoriesAtom, 
-  currPickedLocation 
-} from '../../../store/atoms'
-import { useEditItem } from '../../../store/mutations'
-
+import { editLocation } from '../../../store/features/locations'
+import { useDispatch, useSelector } from 'react-redux'
 
 function EditCategory() {
-  const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
-  const location = useRecoilValue(currPickedLocation);
-  const categories = useRecoilValue(categoriesAtom);
-  const editLocation = useEditItem(ENTITY_LOCATIONS)
+  const currentLocation = useSelector(state => state.context.currentPickedItem)
+  const categories = useSelector(state => state.categories)
+  const dispatch = useDispatch()
 
-  useEffect(() => {
-    setCurrentPage(EDIT_LOCATION)
-  }, [])
-
-  const editClickHandler = newLocationName => {
-    return editLocation(location.name, newLocationName)
+  const editClickHandler = updatedLocation => {
+    return dispatch(editLocation(updatedLocation))
   }
 
   return (
@@ -36,8 +25,7 @@ function EditCategory() {
       <div className="page__content">
         <Form 
           clickHandler={editClickHandler}
-          currentPage={currentPage}
-          location={location}
+          location={currentLocation}
           categories={categories}
         />
       </div>

@@ -3,12 +3,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Input.css';
 
-const Input = ({ category = {}, label = '', onChangeHandler }) => {
+const Input = ({ value = '', label = '', onChangeHandler }) => {
   return (
     <fieldset>
       <label htmlFor="categoryName">{label}</label>
       <input 
-        value={category.name} 
+        value={value} 
         onChange={e => onChangeHandler(e.target.value)} 
         type="text" 
         className="form-control input" 
@@ -21,7 +21,10 @@ const Input = ({ category = {}, label = '', onChangeHandler }) => {
 };
 
 Input.propTypes = {
-  category: PropTypes.object.isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.string.isRequired,
+    PropTypes.number.isRequired,
+  ]),
   label: PropTypes.string.isRequired,
   onChangeHandler: PropTypes.func.isRequired,
 }
