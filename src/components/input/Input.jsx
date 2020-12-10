@@ -1,8 +1,9 @@
 // libraries and css
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Input.css';
 
-const Input = ({ category = {}, label, onChangeHandler }) => {
+const Input = ({ category = {}, label = '', onChangeHandler }) => {
   return (
     <fieldset>
       <label htmlFor="categoryName">{label}</label>
@@ -18,5 +19,11 @@ const Input = ({ category = {}, label, onChangeHandler }) => {
     </fieldset>
   );
 };
+
+Input.propTypes = {
+  category: PropTypes.object.isRequired,
+  label: PropTypes.string.isRequired,
+  onChangeHandler: PropTypes.func.isRequired,
+}
 
 export default Input;

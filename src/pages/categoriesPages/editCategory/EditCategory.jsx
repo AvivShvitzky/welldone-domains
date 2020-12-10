@@ -18,7 +18,6 @@ function EditCategory() {
 
   const editClickHandler = updatedCategory => {
     dispatch(editCategory(updatedCategory))
-    console.log(updatedCategory);
   }
 
   return (
