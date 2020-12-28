@@ -10,15 +10,10 @@ import Select from '../../select/Select'
 // consts
 import { 
   TOAST_SUCCESS, 
-  TOAST_WARNING,
-  NEW_CATEGORY_SUCCESS,
-  NEW_CATEGORY_FAIL,
   EDIT_CATEGORY_SUCCESS,
-  EDIT_CATEGORY_FAIL,
   CREATE_TOAST,
   DELETE_TOAST
 } from '../../toast/Toast.consts'
-import { NEW_CATEGORY, EDIT_CATEGORY } from '../../../consts'
 
 import useToast from '../../toast/Toast'
 

@@ -1,5 +1,9 @@
 import { categories } from '../mockData'
 
+import {tmp} from '../../pages/tmp'
+
+tmp([1, 2, 3, 4, 5, 6], (val) => val > 2)
+
 // constants
 const EDIT_CATEGORY = 'EDIT_CATEGORY';
 

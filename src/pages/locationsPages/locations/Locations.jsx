@@ -27,7 +27,7 @@ function Locations(props) {
   useEffect(() => {
     dispatch(setCurrentPage(LOCATIONS))
     dispatch(setCurrentEntity(LOCATIONS))
-  }, [locations])
+  }, [])
 
   // allows the parent div to fire a click event seperate from his childs
   const onParentClick = event => {

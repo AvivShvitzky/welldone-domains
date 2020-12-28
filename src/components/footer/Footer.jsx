@@ -20,7 +20,8 @@ function Footer() {
   const dispatch = useDispatch()
 
   const handleNavigate = currentEntity => {
-    dispatch(setCurrentEntity(currentEntity))
+    console.log(currentEntity);
+    // dispatch(setCurrentEntity(currentEntity))
   }
 
   return (

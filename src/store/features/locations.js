@@ -18,7 +18,6 @@ export default (state = locations, action) => {
   switch (action.type) {
     case EDIT_LOCATION:
       const { updatedLocation } = action.payload;
-      console.log(updatedLocation);
       return state.map(location => 
         location.id === updatedLocation.id 
         ? { ...location, ...updatedLocation } 
